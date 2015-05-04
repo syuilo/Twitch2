@@ -13,11 +13,11 @@ namespace Twitch
 		/// <param name="id">ミュートするユーザーのID。</param>
 		/// <returns>ミュートされたユーザー</returns>
 		public async Task<User> MutesUsersCreate(
-			string screen_name = null, string id = null)
+			string screen_name = null, Int64? id = null)
 		{
 			var query = new StringDictionary();
 			query["screen_name"] = screen_name;
-			query["user_id"] = id;
+			query["user_id"] = id.ToString();
 
 			return new User(this,
 				await this.Request(
@@ -32,11 +32,11 @@ namespace Twitch
 		/// <param name="id">ミュートを解除するユーザーのID。</param>
 		/// <returns>ミュートを解除されたユーザー</returns>
 		public async Task<User> MutesUsersDestroy(
-			string screen_name = null, string id = null)
+			string screen_name = null, Int64? id = null)
 		{
 			var query = new StringDictionary();
 			query["screen_name"] = screen_name;
-			query["user_id"] = id;
+			query["user_id"] = id.ToString();
 
 			return new User(this,
 				await this.Request(
