@@ -21,7 +21,7 @@ namespace Twitch
 		/// <summary>
 		/// Twitterへのリクエストを作成します。
 		/// </summary>
-		/// <param name="twitterContext">リクエストを行うTwitterContext。</param>
+		/// <param name="twitter">リクエストを行うTwitterオブジェクト。</param>
 		/// <param name="method">APIのリクエストに使用するHTTPメソッド。</param>
 		/// <param name="url">APIのURL。</param>
 		/// <param name="query">リクエストのパラメータ。</param>
