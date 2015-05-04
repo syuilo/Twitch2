@@ -77,7 +77,7 @@ UserStreamのStreaming 接続は、様々な理由により予期せずに切断
 このとき、あらかじめStreamの*IsAutoReconnect*プロパティを`true`にしておくと、自動的に再接続を試みます。
 
 ## カスタム リクエストの作成
-一般に公開されていないエンドポイントへのリクエストなど、Twitchが対応していないAPIへの独自のリクエストを送信したい場合は ***TwitterRequest* クラス(*Twitch.TwitterRequest*)** を利用して簡単にリクエストを作成できます。
+一般に公開されていないエンドポイントへのリクエストなど、Twitchが対応していないAPIへの独自のリクエストを送信したい場合は、**Twitterオブジェクトの*Requestメソッド***を利用するか、または ***TwitterRequest* クラス(*Twitch.TwitterRequest*)** を利用して簡単にリクエストを作成できます。
 
 # License
 ms-pl
