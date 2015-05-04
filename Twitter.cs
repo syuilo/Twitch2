@@ -69,6 +69,18 @@ namespace Twitch
 			private set;
 		}
 
+		/// <summary>
+		/// このTwitterオブジェクトにAccessTokenおよびAccessTokenSecretが設定されているかどうかを取得します。
+		/// </summary>
+		public bool IsAuthorized
+		{
+			get
+			{
+				return !(String.IsNullOrEmpty(this.AccessToken) || String.IsNullOrEmpty(this.AccessTokenSecret))
+			}
+			private set;
+		}
+
 		private Authorize Auth
 		{
 			get;
