@@ -76,7 +76,7 @@ namespace Twitch
 		{
 			get
 			{
-				return !(String.IsNullOrEmpty(this.AccessToken) || String.IsNullOrEmpty(this.AccessTokenSecret))
+				return !(String.IsNullOrEmpty(this.AccessToken) || String.IsNullOrEmpty(this.AccessTokenSecret));
 			}
 			private set;
 		}
