@@ -2,7 +2,7 @@
 Twitch2 is a .NET Twitter library
 
 # Examples
-## Authentication
+## はじめに
 まず
 ```CSharp
 var twitter = new Twitter("your consumer key", "your consumer secret");
