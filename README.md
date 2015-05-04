@@ -43,7 +43,7 @@ Streaming APIの中でも、*UserStream*はユーザーのホーム タイムラ
 つまり、通常のそのユーザーのホーム タイムラインに表示されるべきツイートに加えて、ツイートがお気に入りに登録された/解除された、フォローされた、リストが更新されたなどのイベントが発行されます。
 Twitchではこれらのイベントも簡単に利用できます。
 
-UserStreamに接続するには、*Streaming.UserStream* クラスを利用します。
+UserStreamに接続するには、*UserStream (Twitch.Streaming.UserStream)* クラスを利用します。
 UserStream クラスの *Connect()* メソッドにより接続を開始出来ます。
 
 具体的なコードを以下に示します。
