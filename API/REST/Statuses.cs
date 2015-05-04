@@ -43,7 +43,7 @@ namespace Twitch
 			var statuses = new List<Status>();
 			foreach (dynamic status in json)
 			{
-				statuses.Add(new Status(this, status.ToString()));
+				statuses.Add(new Status(status.ToString()));
 			}
 			return statuses;
 		}
@@ -92,7 +92,7 @@ namespace Twitch
 			var statuses = new List<Status>();
 			foreach (dynamic status in json)
 			{
-				statuses.Add(new Status(this, status.ToString()));
+				statuses.Add(new Status(status.ToString()));
 			}
 			return statuses;
 		}
@@ -131,7 +131,7 @@ namespace Twitch
 			var statuses = new List<Status>();
 			foreach (dynamic status in json)
 			{
-				statuses.Add(new Status(this, status.ToString()));
+				statuses.Add(new Status(status.ToString()));
 			}
 			return statuses;
 		}
@@ -151,7 +151,7 @@ namespace Twitch
 			query["status"] = status;
 			query["in_reply_to_status_id"] = in_reply_to_status_id.ToString();
 
-			return new Status(this,
+			return new Status(
 				await this.Request(API.Method.POST, new Uri(API.Urls.Statuses_Update), query));
 		}
 
@@ -166,7 +166,7 @@ namespace Twitch
 			var query = new StringDictionary();
 			query["id"] = id.ToString();
 
-			return new Status(this,
+			return new Status(
 				await this.Request(API.Method.POST, new Uri(API.Urls.Statuses_Retweet + id + ".json"), query));
 		}
 
@@ -181,7 +181,7 @@ namespace Twitch
 			var query = new StringDictionary();
 			query["id"] = id.ToString();
 
-			return new Status(this,
+			return new Status(
 				await this.Request(API.Method.GET, new Uri(API.Urls.Statuses_Show), query));
 		}
 	}

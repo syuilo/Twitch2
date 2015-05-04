@@ -17,7 +17,7 @@ namespace Twitch
 			query["id"] = id.ToString();
 
 			string res = await this.Request(API.Method.POST, new Uri(API.Urls.Favorites_Create), query);
-			return res != null ? new Status(this, res) : null;
+			return res != null ? new Status(res) : null;
 		}
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace Twitch
 			query["id"] = id.ToString();
 
 			string res = await this.Request(API.Method.POST, new Uri(API.Urls.Favorites_Destroy), query);
-			return res != null ? new Status(this, res) : null;
+			return res != null ? new Status(res) : null;
 		}
 	}
 }

@@ -26,7 +26,7 @@ namespace Twitch
 			query["user_id"] = id.ToString();
 			query["follow"] = follow.ToString();
 
-			return new User(this,
+			return new User(
 				await this.Request(
 					API.Method.POST,
 					new Uri(API.Urls.Friendships_Create), query));
@@ -46,7 +46,7 @@ namespace Twitch
 			query["screen_name"] = screen_name;
 			query["user_id"] = id.ToString();
 
-			return new User(this,
+			return new User(
 				await this.Request(
 					API.Method.POST,
 					new Uri(API.Urls.Friendships_Destroy), query));

@@ -26,7 +26,7 @@ namespace Twitch
 			if (location != null) query["location"] = location;
 			if (description != null) query["description"] = description;
 
-			return new User(this, await this.Request(API.Method.POST, new Uri(API.Urls.Account_UpdateProfile), query));
+			return new User(await this.Request(API.Method.POST, new Uri(API.Urls.Account_UpdateProfile), query));
 		}
 
 		/// <summary>
@@ -39,7 +39,7 @@ namespace Twitch
 			var query = new StringDictionary();
 			query["image"] = image;
 
-			return new User(this, await this.Request(API.Method.POST, new Uri(API.Urls.Account_UpdateProfileImage), query));
+			return new User(await this.Request(API.Method.POST, new Uri(API.Urls.Account_UpdateProfileImage), query));
 		}
 	}
 }

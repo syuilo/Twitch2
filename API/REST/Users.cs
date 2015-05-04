@@ -25,7 +25,7 @@ namespace Twitch
 			query["user_id"] = user_id.ToString();
 			query["screen_name"] = screen_name;
 
-			return new User(this,
+			return new User(
 				await this.Request(
 					API.Method.GET,
 					new Uri(API.Urls.Users_Show), query));
@@ -48,7 +48,7 @@ namespace Twitch
 			query["user_id"] = user_id.ToString();
 			query["screen_name"] = screen_name;
 
-			return new User(this,
+			return new User(
 				await this.Request(
 					API.Method.POST,
 					new Uri(API.Urls.Users_ReportSpam), query));
