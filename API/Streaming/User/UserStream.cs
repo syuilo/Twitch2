@@ -2,7 +2,7 @@
 using Twitch.API;
 using Twitch.Entity;
 
-namespace Twitch.Streaming
+namespace Twitch.Streaming.User
 {
 	/// <summary>
 	/// UserStreamとの接続を行うクラスです。
@@ -361,8 +361,8 @@ namespace Twitch.Streaming
 						this.OnBlocked(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -374,8 +374,8 @@ namespace Twitch.Streaming
 						this.OnUnBlocked(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -387,8 +387,8 @@ namespace Twitch.Streaming
 						this.OnFavorited(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = new Status(json["target_object"].ToString()),
 								CreatedAt = json["created_at"],
@@ -400,8 +400,8 @@ namespace Twitch.Streaming
 						this.OnUnFavorited(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = new Status(json["target_object"].ToString()),
 								CreatedAt = json["created_at"],
@@ -413,8 +413,8 @@ namespace Twitch.Streaming
 						this.OnFollowed(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -426,8 +426,8 @@ namespace Twitch.Streaming
 						this.OnUnFollowed(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -439,8 +439,8 @@ namespace Twitch.Streaming
 						this.OnListCreated(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -452,8 +452,8 @@ namespace Twitch.Streaming
 						this.OnListDestoryed(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -465,8 +465,8 @@ namespace Twitch.Streaming
 						this.OnListUpdated(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -478,8 +478,8 @@ namespace Twitch.Streaming
 						this.OnListMemberAdded(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -491,8 +491,8 @@ namespace Twitch.Streaming
 						this.OnListMemberRemoved(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -504,8 +504,8 @@ namespace Twitch.Streaming
 						this.OnListUserSubscribed(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -517,8 +517,8 @@ namespace Twitch.Streaming
 						this.OnListUserUnSubscribed(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -530,8 +530,8 @@ namespace Twitch.Streaming
 						this.OnUserUpdated(
 							new StreamEventEventArgs
 							{
-								Target = new User(json["target"].ToString()),
-								Source = new User(json["source"].ToString()),
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],

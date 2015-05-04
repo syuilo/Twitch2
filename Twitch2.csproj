@@ -60,8 +60,9 @@
     <Compile Include="API\Streaming\EventArgses\StatusUpdatedEventArgs.cs" />
     <Compile Include="API\Streaming\EventArgses\StreamEventArgs.cs" />
     <Compile Include="API\Streaming\EventArgses\StreamEventEventArgs.cs" />
+    <Compile Include="API\Streaming\Statuses\Filter.cs" />
     <Compile Include="API\Streaming\StreamingBase.cs" />
-    <Compile Include="API\Streaming\UserStream.cs" />
+    <Compile Include="API\Streaming\User\UserStream.cs" />
     <Compile Include="API\Urls.cs" />
     <Compile Include="Authorize.cs" />
     <Compile Include="OAuth\Core.cs" />

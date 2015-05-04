@@ -9,13 +9,13 @@ namespace Twitch.Streaming
 {
 	public class StreamEventEventArgs : EventArgs
 	{
-		public User Target
+		public Entity.User Target
 		{
 			get;
 			set;
 		}
 
-		public User Source
+		public Entity.User Source
 		{
 			get;
 			set;
