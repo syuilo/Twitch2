@@ -22,7 +22,7 @@ twitter = await twitter.AuthorizePin('got pin code');
 twitter.StatusesUpdate("Hello, Twitch!");
 ```
 さあどうでしょうか。タイムラインを確認してみてください。
-無事にツイートが投稿されていれば成功です。
+**無事にツイートが投稿されていれば成功です。**
 
 ### 上記のコードの解説
 `var twitter = new Twitter(...)`で***Twitterクラス*のインスタンス**を作成しています。
