@@ -27,8 +27,11 @@ twitter.StatusesUpdate("Hello, Twitch!");
 
 ### 上記のコードの解説
 `var twitter = new Twitter(...)`で***Twitterクラス(Twitch.Twitter)*のインスタンス**を作成しています。
-この**「Twitterクラスのインスタンス」をTwitchでは*Twitterオブジェクト*と呼んでいます。**
+
+便宜上、この**「Twitterクラスのインスタンス」のことをTwitchでは*Twitterオブジェクト*と呼んでいます。**
+
 Twitterオブジェクトの`Authorize`メソッドの呼び出しでブラウザに認証フォームを表示させます。
+
 Twitterオブジェクトの`AuthorizePin`メソッドは、PINコードを受け取って、新たな認証されたユーザーのTwitterオブジェクトを返します(呼び出したTwitterオブジェクト自体が書き換わるわけではありません。**新たな**Twitterオブジェクトを返します)。
 
 ## ストリーミング
