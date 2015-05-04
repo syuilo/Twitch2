@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Twitch
@@ -161,6 +158,14 @@ namespace Twitch
 		}
 
 		#endregion
+
+		public override string ToString()
+		{
+			if (this.IsAuthorized)
+				return this.ConsumerKey + ':' + this.ConsumerSecret + '/' + this.AccessToken + ':' + this.AccessTokenSecret;
+			else
+				return this.ConsumerKey + ':' + this.ConsumerSecret;
+		}
 
 		/// <summary>
 		/// 認証されたユーザーでTwitter APIへリクエストを送信し、非同期でレスポンスを取得します。
