@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AAC6FABE-DE79-4FE2-A4A0-6B939BCFAA98}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Twitch</RootNamespace>
+    <AssemblyName>Twitch</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Twitch.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\Method.cs" />
+    <Compile Include="API\REST\Account.cs" />
+    <Compile Include="API\REST\Blocks.cs" />
+    <Compile Include="API\REST\DirectMessages.cs" />
+    <Compile Include="API\REST\Favorites.cs" />
+    <Compile Include="API\REST\Friendships.cs" />
+    <Compile Include="API\REST\Lists.cs" />
+    <Compile Include="API\REST\Mutes.cs" />
+    <Compile Include="API\REST\OAuth.cs" />
+    <Compile Include="API\REST\Statuses.cs" />
+    <Compile Include="API\REST\Users.cs" />
+    <Compile Include="API\Streaming\EventArgses\DisconnectedEventArgs.cs" />
+    <Compile Include="API\Streaming\EventArgses\FriendsListsEventArgs.cs" />
+    <Compile Include="API\Streaming\EventArgses\StatusDeletionEventArgs.cs" />
+    <Compile Include="API\Streaming\EventArgses\StatusUpdatedEventArgs.cs" />
+    <Compile Include="API\Streaming\EventArgses\StreamEventArgs.cs" />
+    <Compile Include="API\Streaming\EventArgses\StreamEventEventArgs.cs" />
+    <Compile Include="API\Streaming\StreamingBase.cs" />
+    <Compile Include="API\Streaming\UserStream.cs" />
+    <Compile Include="API\Urls.cs" />
+    <Compile Include="Authorize.cs" />
+    <Compile Include="OAuth\Core.cs" />
+    <Compile Include="OAuth\OAuthBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Twitter\Response\Entities\Entities.cs" />
+    <Compile Include="Twitter\Response\Entities\Hashtag.cs" />
+    <Compile Include="Twitter\Response\Entities\Media.cs" />
+    <Compile Include="Twitter\Response\Entities\Size.cs" />
+    <Compile Include="Twitter\Response\Entities\Sizes.cs" />
+    <Compile Include="Twitter\Response\Entities\URL.cs" />
+    <Compile Include="Twitter\Response\Entities\UserMentions.cs" />
+    <Compile Include="Twitter\Response\Other\Annotations.cs" />
+    <Compile Include="Twitter\Response\Other\Geo.cs" />
+    <Compile Include="Twitter\Response\Places\BoundingBox.cs" />
+    <Compile Include="Twitter\Response\Places\Places.cs" />
+    <Compile Include="Twitter\Response\Tweets\Contributors.cs" />
+    <Compile Include="Twitter\Response\Tweets\Coordinates.cs" />
+    <Compile Include="Twitter\Response\Tweets\Status.cs" />
+    <Compile Include="Twitter\Response\TwitterResponse.cs" />
+    <Compile Include="Twitter\Response\Users\User.cs" />
+    <Compile Include="Twitter\Status.cs" />
+    <Compile Include="Twitter.cs" />
+    <Compile Include="TwitterBase.cs" />
+    <Compile Include="TwitterRequest.cs" />
+    <Compile Include="Twitter\User.cs" />
+    <Compile Include="Utility\AnalyzeUrlQuery.cs" />
+    <Compile Include="Utility\DynamicJson.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
