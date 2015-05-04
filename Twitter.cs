@@ -75,7 +75,10 @@ namespace Twitch
 			{
 				return !(String.IsNullOrEmpty(this.AccessToken) || String.IsNullOrEmpty(this.AccessTokenSecret));
 			}
-			private set;
+			private set
+			{
+			
+			}
 		}
 
 		private Authorize Auth
@@ -175,10 +178,10 @@ namespace Twitch
 		/// <param name="parameter">リクエストのパラメーター。</param>
 		/// <returns>APIから返された値(レスポンス)</returns>
 		public async Task<string> Request(
-			API.Method method, System.Uri url, StringDictionary parameter = null)
+			API.Method method, System.Uri url, StringDictionary parameter = null, string proxy = null)
 		{
 			return await new TwitterRequest(
-				this, method, url, parameter).Request();
+				this, method, url, parameter, proxy).Request();
 		}
 
 		/// <summary>
