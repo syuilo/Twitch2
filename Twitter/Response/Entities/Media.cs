@@ -15,21 +15,21 @@ namespace Twitch.Response.Entities
 		public Media()
 			: base() { }
 
-		public Media(Twitter twitter, string source)
-			: base(twitter, source)
+		public Media(string source)
+			: base(source)
 		{
-				this.ExpandedUrl = new Uri(this.Json["expanded_url"]);
-				this.Url = new Uri(this.Json["url"]);
-				this.Indices = this.Json["indices"];
-				this.DisplayUrl = this.Json["display_url"];
-				this.ID = this.Json["id"];
-				this.StringID = this.Json["id_str"];
-				this.MediaUrl = new Uri(this.Json["media_url"]);
-				this.MediaUrlHttps = new Uri(this.Json["media_url_https"]);
-				this.Sizes = new Sizes(twitter, this.Json["sizes"].ToString());
-				this.SourceStatusID = (this.Json.IsDefined("source_status_id")) ? (Int64?)this.Json["source_status_id"] : null;
-				this.SourceStatusStringID = (this.Json.IsDefined("source_status_id_str")) ? this.Json["source_status_id_str"] : null;
-				this.Type = this.Json["type"];
+			this.ExpandedUrl = new Uri(this.Json["expanded_url"]);
+			this.Url = new Uri(this.Json["url"]);
+			this.Indices = this.Json["indices"];
+			this.DisplayUrl = this.Json["display_url"];
+			this.ID = this.Json["id"];
+			this.StringID = this.Json["id_str"];
+			this.MediaUrl = new Uri(this.Json["media_url"]);
+			this.MediaUrlHttps = new Uri(this.Json["media_url_https"]);
+			this.Sizes = new Sizes(this.Json["sizes"].ToString());
+			this.SourceStatusID = (this.Json.IsDefined("source_status_id")) ? (Int64?)this.Json["source_status_id"] : null;
+			this.SourceStatusStringID = (this.Json.IsDefined("source_status_id_str")) ? this.Json["source_status_id_str"] : null;
+			this.Type = this.Json["type"];
 		}
 
 		/// <summary>

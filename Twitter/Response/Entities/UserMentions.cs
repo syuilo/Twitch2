@@ -15,8 +15,8 @@ namespace Twitch.Response.Entities
 		public UserMentions()
 			: base() { }
 
-		public UserMentions(Twitter twitter, string source)
-			: base(twitter, source)
+		public UserMentions(string source)
+			: base(source)
 		{
 			this.ID = (Int64)this.Json["id"];
 			this.StringID = this.Json["id_str"];

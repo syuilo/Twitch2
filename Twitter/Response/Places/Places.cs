@@ -12,10 +12,10 @@ namespace Twitch.Response.Places
 		public Places()
 			: base() { }
 
-		public Places(Twitter twitter, string source)
-			: base(twitter, source)
+		public Places(string source)
+			: base(source)
 		{
-			this.BoundingBox = (this.Json.IsDefined("bounding_box")) ? new BoundingBox(twitter, this.Json["bounding_box"].ToString()) : null;
+			this.BoundingBox = (this.Json.IsDefined("bounding_box")) ? new BoundingBox(this.Json["bounding_box"].ToString()) : null;
 			this.Country = this.Json["country"];
 			this.CountryCode = this.Json["country_code"];
 			this.FullName = this.Json["full_name"];

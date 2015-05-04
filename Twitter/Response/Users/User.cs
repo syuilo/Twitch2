@@ -18,8 +18,8 @@ namespace Twitch.Response.Users
 		/// Userを初期化します。
 		/// </summary>
 		/// <param name="source">Jsonソース</param>
-		public User(Twitter twitter, string source)
-			: base(twitter, source)
+		public User(string source)
+			: base(source)
 		{
 			this.ProfileSidebarFillColor = ColorTranslator.FromHtml('#' + this.Json["profile_sidebar_fill_color"]);
 			this.ProfileSidebarBorderColor = ColorTranslator.FromHtml('#' + this.Json["profile_sidebar_border_color"]);
@@ -54,7 +54,7 @@ namespace Twitch.Response.Users
 			this.Description = this.Json["description"];
 			this.IsDefaultProfileImage = this.Json["default_profile_image"];
 			this.ProfileBackgroundImageUrl = new Uri(this.Json["profile_background_image_url"]);
-			this.Status = (this.Json.IsDefined("status")) ? new Tweets.Status(twitter, this.Json["status"].ToString()) : null;
+			this.Status = (this.Json.IsDefined("status")) ? new Tweets.Status(this.Json["status"].ToString()) : null;
 			this.StatusesCount = this.Json["statuses_count"];
 			this.FriendsCount = this.Json["friends_count"];
 			this.IsFollowing = this.Json["following"];

@@ -360,8 +360,8 @@ namespace Twitch.Streaming
 						this.OnBlocked(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -373,8 +373,8 @@ namespace Twitch.Streaming
 						this.OnUnBlocked(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -386,10 +386,10 @@ namespace Twitch.Streaming
 						this.OnFavorited(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
-								TargetObject = new Twitter.Status(this.TwitterContext, json["target_object"].ToString()),
+								TargetObject = new Twitter.Status(json["target_object"].ToString()),
 								CreatedAt = json["created_at"],
 							}
 						);
@@ -399,10 +399,10 @@ namespace Twitch.Streaming
 						this.OnUnFavorited(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
-								TargetObject = new Twitter.Status(this.TwitterContext, json["target_object"].ToString()),
+								TargetObject = new Twitter.Status(json["target_object"].ToString()),
 								CreatedAt = json["created_at"],
 							}
 						);
@@ -412,8 +412,8 @@ namespace Twitch.Streaming
 						this.OnFollowed(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -425,8 +425,8 @@ namespace Twitch.Streaming
 						this.OnUnFollowed(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -438,8 +438,8 @@ namespace Twitch.Streaming
 						this.OnListCreated(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -451,8 +451,8 @@ namespace Twitch.Streaming
 						this.OnListDestoryed(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -464,8 +464,8 @@ namespace Twitch.Streaming
 						this.OnListUpdated(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -477,8 +477,8 @@ namespace Twitch.Streaming
 						this.OnListMemberAdded(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -490,8 +490,8 @@ namespace Twitch.Streaming
 						this.OnListMemberRemoved(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -503,8 +503,8 @@ namespace Twitch.Streaming
 						this.OnListUserSubscribed(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -516,8 +516,8 @@ namespace Twitch.Streaming
 						this.OnListUserUnSubscribed(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -529,8 +529,8 @@ namespace Twitch.Streaming
 						this.OnUserUpdated(
 							new StreamEventEventArgs
 							{
-								Target = new Twitter.User(this.TwitterContext, json["target"].ToString()),
-								Source = new Twitter.User(this.TwitterContext, json["source"].ToString()),
+								Target = new Twitter.User(json["target"].ToString()),
+								Source = new Twitter.User(json["source"].ToString()),
 								Event = json["event"],
 								TargetObject = null,
 								CreatedAt = json["created_at"],
@@ -580,7 +580,7 @@ namespace Twitch.Streaming
 
 				try
 				{
-					status = new Twitter.Status(this.TwitterContext, json.ToString());
+					status = new Twitter.Status(json.ToString());
 				}
 				catch
 				{

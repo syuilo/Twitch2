@@ -15,8 +15,8 @@ namespace Twitch.Response.Entities
 		public Hashtag()
 			: base() { }
 
-		public Hashtag(Twitter twitter, string source)
-			: base(twitter, source)
+		public Hashtag(string source)
+			: base(source)
 		{
 			this.Indices = this.Json["indices"];
 			this.Text = this.Json["text"];
@@ -32,7 +32,7 @@ namespace Twitch.Response.Entities
 			get;
 			private set;
 		}
-		
+
 		/// <summary>
 		/// ハッシュタグ記号(#)を含めないハッシュタグ文字列。
 		/// </summary>

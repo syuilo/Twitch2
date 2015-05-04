@@ -15,12 +15,12 @@ namespace Twitch.Response.Entities
 		public Size()
 			: base() { }
 
-		public Size(Twitter twitter, string source)
-			: base(twitter, source)
+		public Size(string source)
+			: base(source)
 		{
-				this.H = this.Json["h"];
-				this.W = this.Json["w"];
-				this.Resize = this.Json["resize"];
+			this.H = this.Json["h"];
+			this.W = this.Json["w"];
+			this.Resize = this.Json["resize"];
 		}
 
 		/// <summary>

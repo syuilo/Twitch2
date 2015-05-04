@@ -15,14 +15,14 @@ namespace Twitch.Response.Entities
 		public Entities()
 			: base() { }
 
-		public Entities(Twitter twitter, string source)
-			: base(twitter, source)
+		public Entities(string source)
+			: base(source)
 		{
 			this.Hashtags = new List<Hashtag>();
 			foreach (dynamic hashtag in this.Json["hashtags"])
 			{
 				this.Hashtags.Add(
-					new Hashtag(twitter, hashtag.ToString()));
+					new Hashtag(hashtag.ToString()));
 			}
 
 			if (this.Json.IsDefined("media"))
@@ -31,7 +31,7 @@ namespace Twitch.Response.Entities
 				foreach (dynamic media in this.Json["media"])
 				{
 					this.Media.Add(
-						new Media(twitter, media.ToString()));
+						new Media(media.ToString()));
 				}
 			}
 
@@ -39,14 +39,14 @@ namespace Twitch.Response.Entities
 			foreach (dynamic url in this.Json["urls"])
 			{
 				this.Urls.Add(
-					new URL(twitter, url.ToString()));
+					new URL(url.ToString()));
 			}
 
 			this.UserMentions = new List<UserMentions>();
 			foreach (dynamic userMentions in this.Json["user_mentions"])
 			{
 				this.UserMentions.Add(
-					new UserMentions(twitter, userMentions.ToString()));
+					new UserMentions(userMentions.ToString()));
 			}
 		}
 

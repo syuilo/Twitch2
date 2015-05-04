@@ -15,8 +15,8 @@ namespace Twitch.Response.Tweets
 		public Status()
 			: base() { }
 
-		public Status(Twitter twitter, string source)
-			: base(twitter, source)
+		public Status(string source)
+			: base(source)
 		{
 			//this.Contributors = new Entities(json["contributors"].ToString());
 			//this.Coordinates = new Coordinates(json["coordinates"].ToString());
@@ -24,7 +24,7 @@ namespace Twitch.Response.Tweets
 			this.IsTruncated = this.Json["truncated"];
 			this.CreatedAt = DateTime.ParseExact(this.Json["created_at"], DateTimeFormat, System.Globalization.DateTimeFormatInfo.InvariantInfo, System.Globalization.DateTimeStyles.None);
 			this.StringID = this.Json["id_str"];
-			this.Entities = new Entities.Entities(twitter, this.Json["entities"].ToString());
+			this.Entities = new Entities.Entities(this.Json["entities"].ToString());
 			this.Text = this.Json["text"];
 			this.RetweetCount = this.Json["retweet_count"];
 			this.FavoriteCount = this.Json["favorite_count"];
@@ -34,8 +34,8 @@ namespace Twitch.Response.Tweets
 			this.IsRetweeted = this.Json["retweeted"];
 			this.IsPossiblySensitive = (this.Json.IsDefined("possibly_sensitive")) ? this.Json["possibly_sensitive"] : null;
 			this.InReplyToUserID = (Int64?)this.Json["in_reply_to_user_id"];
-			this.Place = (this.Json["place"] != null) ? new Places.Places(twitter, this.Json["place"].ToString()) : null;
-			this.User = (this.Json.IsDefined("user")) ? new Twitter.User(twitter, this.Json["user"].ToString()) : null;
+			this.Place = (this.Json["place"] != null) ? new Places.Places(this.Json["place"].ToString()) : null;
+			this.User = (this.Json.IsDefined("user")) ? new Twitter.User(this.Json["user"].ToString()) : null;
 			this.InReplyToScreenName = this.Json["in_reply_to_screen_name"];
 			this.Source = this.Json["source"];
 			this.InReplyToStatusID = this.Json["in_reply_to_status_id"];

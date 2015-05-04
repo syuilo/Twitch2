@@ -25,10 +25,8 @@ namespace Twitch
 		/// TwitterResponseを初期化します。
 		/// </summary>
 		/// <param name="source">Json ソース</param>
-		public TwitterResponse(Twitter twitter, string source)
+		public TwitterResponse(string source)
 		{
-			this.Twitter = twitter;
-
 			if (source != null)
 			{
 				this.StringJson = source;
@@ -46,15 +44,6 @@ namespace Twitch
 			else
 				throw new Exception(
 					"データ ソースが空です。TwitterResponseの初期化には、元となるJson ソースを与える必要があります。");
-		}
-
-		/// <summary>
-		/// このエンティティに対して操作を行うためのTwitterオブジェクト
-		/// </summary>
-		protected Twitter Twitter
-		{
-			get;
-			set;
 		}
 
 		/// <summary>

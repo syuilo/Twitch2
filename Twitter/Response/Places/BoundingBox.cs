@@ -15,8 +15,8 @@ namespace Twitch.Response.Places
 		public BoundingBox()
 			: base() { }
 
-		public BoundingBox(Twitter twitter, string source)
-			: base(twitter, source)
+		public BoundingBox(string source)
+			: base(source)
 		{
 			this.Coordinates = this.Json["coordinates"];
 			this.Type = this.Json["type"];

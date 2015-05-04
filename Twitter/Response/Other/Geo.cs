@@ -15,8 +15,8 @@ namespace Twitch
 		public Geo()
 			: base() { }
 
-		public Geo(Twitter twitter, string source)
-			: base(twitter, source)
+		public Geo(string source)
+			: base(source)
 		{
 
 		}

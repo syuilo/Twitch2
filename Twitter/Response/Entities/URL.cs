@@ -11,8 +11,8 @@ namespace Twitch.Response.Entities
 		public URL()
 			: base() { }
 
-		public URL(Twitter twitter, string source)
-			: base(twitter, source)
+		public URL(string source)
+			: base(source)
 		{
 				this.ExpandedUrl = new Uri(this.Json["expanded_url"]);
 				this.Url = new Uri(this.Json["url"]);

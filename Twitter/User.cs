@@ -15,8 +15,8 @@ namespace Twitch
 			public User()
 				: base() { }
 
-			public User(Twitter twitter, string source)
-				: base(twitter, source) { }
+			public User(string source)
+				: base(source) { }
 
 			public void GetObjectData(
 				object obj, SerializationInfo info, StreamingContext context)
@@ -58,27 +58,27 @@ namespace Twitch
 			/// フォローします。
 			/// </summary>
 			/// <returns>成功したかどうか</returns>
-			public async Task<bool> Follow()
+			public async Task<bool> Follow(Twitter twitter)
 			{
-				return await this.Twitter.FriendshipsCreate(id: this.ID) != null;
+				return await twitter.FriendshipsCreate(id: this.ID) != null;
 			}
 
 			/// <summary>
 			/// フォローを解除します。
 			/// </summary>
 			/// <returns>成功したかどうか</returns>
-			public async Task<bool> Remove()
+			public async Task<bool> Remove(Twitter twitter)
 			{
-				return await this.Twitter.FriendshipsDestory(id: this.ID) != null;
+				return await twitter.FriendshipsDestory(id: this.ID) != null;
 			}
 
 			/// <summary>
 			/// スパムとして報告します。
 			/// </summary>
 			/// <returns>成功したかどうか</returns>
-			public async Task<bool> SpamAndBlock()
+			public async Task<bool> SpamAndBlock(Twitter twitter)
 			{
-				return await this.Twitter.UsersReportSpam(user_id: this.ID) != null;
+				return await twitter.UsersReportSpam(user_id: this.ID) != null;
 			}
 
 			// リストに追加します。
