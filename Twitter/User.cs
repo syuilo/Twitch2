@@ -57,31 +57,28 @@ namespace Twitch
 			/// <summary>
 			/// フォローします。
 			/// </summary>
-			/// <param name="twCtx"></param>
 			/// <returns>成功したかどうか</returns>
-			public async Task<bool> Follow(Twitter tw)
+			public async Task<bool> Follow()
 			{
-				return await tw.FriendshipsCreate(id: this.ID) != null;
+				return await this.Twitter.FriendshipsCreate(id: this.ID) != null;
 			}
 
 			/// <summary>
 			/// フォローを解除します。
 			/// </summary>
-			/// <param name="twCtx"></param>
 			/// <returns>成功したかどうか</returns>
-			public async Task<bool> Remove(Twitter tw)
+			public async Task<bool> Remove()
 			{
-				return await tw.FriendshipsDestory(id: this.ID) != null;
+				return await this.Twitter.FriendshipsDestory(id: this.ID) != null;
 			}
 
 			/// <summary>
 			/// スパムとして報告します。
 			/// </summary>
-			/// <param name="twCtx"></param>
-			/// <returns></returns>
-			public async Task<bool> SpamAndBlock(Twitter tw)
+			/// <returns>成功したかどうか</returns>
+			public async Task<bool> SpamAndBlock()
 			{
-				return await tw.UsersReportSpam(user_id: this.ID) != null;
+				return await this.Twitter.UsersReportSpam(user_id: this.ID) != null;
 			}
 
 			// リストに追加します。
