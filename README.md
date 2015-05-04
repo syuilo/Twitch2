@@ -1,5 +1,5 @@
 # Twitch2
-Twitch2 is a .NET Twitter library
+できるかぎりシンプルに、できるかぎり簡単に、できるかぎり美しくTwitterを扱えるようにしたTwitterライブラリです。
 
 # 簡単なドキュメンテーション
 ## はじめに
