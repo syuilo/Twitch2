@@ -12,7 +12,8 @@ namespace Twitch
 		/// <param name="screen_name">ミュートするユーザーのScreenName。</param>
 		/// <param name="id">ミュートするユーザーのID。</param>
 		/// <returns>ミュートされたユーザー</returns>
-		public async Task<User> UsersCreate(string screen_name = null, string id = null)
+		public async Task<User> MutesUsersCreate(
+			string screen_name = null, string id = null)
 		{
 			var query = new StringDictionary();
 			query["screen_name"] = screen_name;
@@ -30,7 +31,8 @@ namespace Twitch
 		/// <param name="screen_name">ミュートを解除するユーザーのScreenName。</param>
 		/// <param name="id">ミュートを解除するユーザーのID。</param>
 		/// <returns>ミュートを解除されたユーザー</returns>
-		public async Task<User> UsersDestroy(string screen_name = null, string id = null)
+		public async Task<User> MutesUsersDestroy(
+			string screen_name = null, string id = null)
 		{
 			var query = new StringDictionary();
 			query["screen_name"] = screen_name;
