@@ -1,7 +1,7 @@
 # Twitch2
 Twitch2 is a .NET Twitter library
 
-# Examples
+# 簡単なドキュメンテーション
 ## はじめに
 まず
 ```CSharp
@@ -65,3 +65,8 @@ public void StreamingCallback(object sender, Twitch.Streaming.StatusUpdatedEvent
 
 UserStreamのStreaming 接続は、様々な理由により予期せずに切断されることがあります。
 このとき、あらかじめStreamの*IsAutoReconnect*プロパティを`true`にしておくと、自動的に再接続を試みます。
+
+# Twitch用語解説
+## Twitterオブジェクト
+**Twitter クラス (Twitch.Twitter クラス)**のことです。
+このクラスから様々なAPIを利用できます。
