@@ -80,7 +80,7 @@ namespace Twitch
 		#region Constructors
 
 		/// <summary>
-		/// TwitterContextを初期化します。
+		/// Twitterオブジェクトを初期化します。
 		/// </summary>
 		/// <param name="consumerKey">アプリケーションの ConsumerKey</param>
 		/// <param name="consumerSecret">アプリケーションの ConsumerSecret</param>
@@ -105,7 +105,7 @@ namespace Twitch
 		}
 
 		/// <summary>
-		/// TwitterContextを初期化します。
+		/// Twitterオブジェクトを初期化します。
 		/// </summary>
 		/// <param name="consumerKey">アプリケーションの ConsumerKey</param>
 		/// <param name="consumerSecret">アプリケーションの ConsumerSecret</param>
@@ -124,7 +124,7 @@ namespace Twitch
 		}
 
 		/// <summary>
-		/// TwitterContextを初期化します。
+		/// Twitterオブジェクトを初期化します。
 		/// </summary>
 		/// <param name="consumerKey">アプリケーションの ConsumerKey</param>
 		/// <param name="consumerSecret">アプリケーションの ConsumerSecret</param>
@@ -137,7 +137,7 @@ namespace Twitch
 		}
 
 		/// <summary>
-		/// TwitterContextを初期化します。
+		/// Twitterオブジェクトを初期化します。
 		/// </summary>
 		/// <param name="twitter">Twitterオブジェクト</param>
 		public Twitter(Twitter twitter)
