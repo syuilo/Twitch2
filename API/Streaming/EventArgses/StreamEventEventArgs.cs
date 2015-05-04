@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Twitch.Entity;
 
 namespace Twitch.Streaming
 {
 	public class StreamEventEventArgs : EventArgs
 	{
-		public Twitter.User Target
+		public User Target
 		{
 			get;
 			set;
 		}
 
-		public Twitter.User Source
+		public User Source
 		{
 			get;
 			set;

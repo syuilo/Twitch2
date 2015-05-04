@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Twitch
+namespace Twitch.Entity
 {
 	/// <summary>
 	/// Twitter APIから受信したデータを扱う基底クラスです。

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Twitch
+namespace Twitch.Entity
 {
 	/// <summary>
 	/// Geo情報を格納する Twitch.Twitter.TwitterResponse です。

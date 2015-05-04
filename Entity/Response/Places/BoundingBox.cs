@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Twitch.Response.Places
+namespace Twitch.Entity.Response.Places
 {
 	/// <summary>
 	/// 

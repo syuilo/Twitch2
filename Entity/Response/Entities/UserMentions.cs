@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Twitch.Response.Entities
+namespace Twitch.Entity.Response.Entities
 {
 	/// <summary>
 	/// メンション情報を格納する <see cref="Twitch.TwitterResponse"/> です。

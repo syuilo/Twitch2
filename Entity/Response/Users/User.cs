@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.Serialization;
 
-namespace Twitch.Response.Users
+namespace Twitch.Entity.Response.Users
 {
 	/// <summary>
 	/// User情報を格納する Twitch.Twitter.TwitterResponse です。

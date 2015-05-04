@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Twitch.Response.Tweets
+namespace Twitch.Entity.Response.Tweets
 {
 	[Serializable]
-	public class Coordinates
+	public class Contributors
 	{
 	}
 }

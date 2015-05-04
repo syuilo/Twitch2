@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Twitch.Response.Entities
+namespace Twitch.Entity.Response.Entities
 {
 	/// <summary>
 	/// URL情報を格納する Twitch.Twitter.TwitterResponse です。
