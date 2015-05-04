@@ -2,7 +2,7 @@
 using Twitch.API;
 using Twitch.Entity;
 
-namespace Twitch.Streaming.User
+namespace Twitch.Streaming
 {
 	/// <summary>
 	/// UserStreamとの接続を行うクラスです。
