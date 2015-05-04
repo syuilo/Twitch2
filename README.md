@@ -80,6 +80,15 @@ UserStreamのStreaming 接続は、様々な理由により予期せずに切断
 ## カスタム リクエストの作成
 一般に公開されていないエンドポイントへのリクエストなど、Twitchが対応していないAPIへの独自のリクエストを送信したい場合は、**Twitterオブジェクトの*Requestメソッド***を利用するか、または ***TwitterRequest* クラス(*Twitch.TwitterRequest*)** を利用して簡単にリクエストを作成できます。
 
+### TwitterオブジェクトのRequestメソッドを利用する例
+```
+var query = new StringDictionary();
+query["hrtn"] = "hmwr";
+query["oomr"] = "skrk";
+
+tw.Request(API.Method.POST, new Uri('https://api.twitter.com/hoge/huga.json'), query);
+```
+
 # License
 ms-pl
 
