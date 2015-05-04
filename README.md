@@ -10,7 +10,7 @@ twitter.Authorize();
 ```
 とします(`your consumer key`にはあなたのアプリケーションの*ConsumerKey*を、`your consumer secret`にはあなたのアプリケーションの*ConsumerSecret*を設定してください)。
 
-すると規定のウェブブラウザで連携認証フォームが表示されます。ユーザーが連携を許可するとPINコードが得られます。
+すると規定のウェブブラウザで連携認証フォームが表示されます。ユーザーが連携を許可すると*PINコード*が得られます。
 次に、
 ```CSharp
 twitter = await twitter.AuthorizePin('got pin code');
