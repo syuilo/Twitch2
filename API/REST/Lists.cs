@@ -13,7 +13,7 @@ namespace Twitch
 		/// <param name="mode">リストの公開状態。 public または private のいずれかを指定します。nullまたは指定しなかった場合はpublic(公開)になります。</param>
 		/// <param name="description">リストの説明。</param>
 		/// <returns></returns>
-		public async Task<string> Create(string name, string description, string mode = null)
+		public async Task<string> ListsCreate(string name, string description, string mode = null)
 		{
 			var query = new StringDictionary();
 			query["name"] = name;
@@ -29,7 +29,7 @@ namespace Twitch
 		/// <param name="slug"></param>
 		/// <param name="owner_screen_name"></param>
 		/// <returns></returns>
-		public async Task<string> Destroy(string slug, string owner_screen_name)
+		public async Task<string> ListsDestroy(string slug, string owner_screen_name)
 		{
 			var query = new StringDictionary();
 			query["slug"] = slug;
@@ -45,7 +45,7 @@ namespace Twitch
 		/// <param name="screen_name"></param>
 		/// <param name="owner_screen_name"></param>
 		/// <returns></returns>
-		public async Task<string> MembersCreate(string slug, string screen_name, string owner_screen_name)
+		public async Task<string> ListsMembersCreate(string slug, string screen_name, string owner_screen_name)
 		{
 			var query = new StringDictionary();
 			query["slug"] = slug;
@@ -62,7 +62,7 @@ namespace Twitch
 		/// <param name="screen_name"></param>
 		/// <param name="owner_screen_name"></param>
 		/// <returns></returns>
-		public async Task<string> MembersDestroy(string slug, string screen_name, string owner_screen_name)
+		public async Task<string> ListsMembersDestroy(string slug, string screen_name, string owner_screen_name)
 		{
 			var query = new StringDictionary();
 			query["slug"] = slug;

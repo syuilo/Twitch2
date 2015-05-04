@@ -91,6 +91,7 @@
     <Compile Include="Entity\User.cs" />
     <Compile Include="Utility\AnalyzeUrlQuery.cs" />
     <Compile Include="Utility\DynamicJson.cs" />
+    <Compile Include="Utility\ImageConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
