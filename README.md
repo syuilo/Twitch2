@@ -49,17 +49,17 @@ Twitchではこれらのイベントも簡単に利用できます。
 UserStreamに接続するには、*UserStream (Twitch.Streaming.UserStream)* クラスを利用します。
 UserStream クラスの *Connect()* メソッドにより接続を開始出来ます。
 
-具体的なコードを以下に示します。(`using Twitch;`してください)
+具体的なコードを以下に示します。(`using Twitch.Streaming;`してください)
 ```CSharp
 var tw = (上記の認証手順などで取得できたTwitterオブジェクト)
  
 // UserStream作成
-var u = new Streaming.UserStream(tw);
+var u = new UserStream(tw);
  
 // StatusUpdated イベントをイベント ハンドラーに登録
 // このイベントは、ホーム タイムラインにツイートが投稿された際に発生します。
 u.StatusUpdated += 
-    new Streaming.UserStream.StatusUpdatedEventHandler(StreamingCallback);
+    new UserStream.StatusUpdatedEventHandler(StreamingCallback);
  
 // 接続を開始
 u.Connect();
@@ -67,7 +67,7 @@ u.Connect();
 上記のコードに加え、ツイートを受け取るイベント ハンドラーを作成する必要があります。
 以下はその例です。
 ```CSharp
-public void StreamingCallback(object sender, Streaming.StatusUpdatedEventArgs e)
+public void StreamingCallback(object sender, StatusUpdatedEventArgs e)
 {
     // ツイートを表示
     Console.WriteLine(e.Status.Text);
