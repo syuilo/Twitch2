@@ -18,7 +18,7 @@ tw.Authorize();
 すると規定のウェブブラウザで連携認証フォームが表示されます。ユーザーが連携を許可すると*PINコード*が得られます。
 次に、
 ```CSharp
-tw = await tw.AuthorizePin('got pin code');
+tw = await tw.AuthorizePin("got pin code");
 ```
 とすることでTwitterAPIにアクセス出来るようになります(`got pin code`には取得できた*PINコード*を設定してください)。
 ここまでたった3文です。
@@ -89,7 +89,7 @@ var query = new StringDictionary();
 query["hrtn"] = "hmwr";
 query["oomr"] = "skrk";
 
-tw.Request(API.Method.POST, new Uri('https://api.twitter.com/hoge/huga.json'), query);
+tw.Request(API.Method.POST, "https://api.twitter.com/hoge/huga.json", query);
 ```
 
 # 初代Twitchからの変更点(初代Twitchを使っていた人向けのセクション)
