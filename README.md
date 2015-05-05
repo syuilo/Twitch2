@@ -1,4 +1,5 @@
-# Twitch2
+![](https://raw.githubusercontent.com/syuilo/Twitch2/master/twitch2.png)
+
 できるかぎりシンプルに、できるかぎり簡単に、できるかぎり美しくTwitterを扱えるようにしたTwitterライブラリです。
 TwitterAPI 1.1、ストリーミング、xAuth認証などにも対応。
 
