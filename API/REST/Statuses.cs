@@ -28,7 +28,8 @@ namespace Twitch
 			bool contributor_details = false,
 			bool include_entities = true)
 		{
-			if (since_id != null && max_id != null) {
+			if (since_id != null && max_id != null)
+			{
 				throw new ArgumentException("since_id と max_id を同時に指定することはできません。");
 			}
 
@@ -77,6 +78,11 @@ namespace Twitch
 			bool contributor_details = false,
 			bool include_rts = false)
 		{
+			if (since_id != null && max_id != null)
+			{
+				throw new ArgumentException("since_id と max_id を同時に指定することはできません。");
+			}
+
 			var query = new StringDictionary();
 			if (user_id != string.Empty)
 				query["user_id"] = user_id;
@@ -121,6 +127,11 @@ namespace Twitch
 			bool contributor_details = true,
 			bool include_entities = true)
 		{
+			if (since_id != null && max_id != null)
+			{
+				throw new ArgumentException("since_id と max_id を同時に指定することはできません。");
+			}
+
 			var query = new StringDictionary();
 			query["count"] = count.ToString();
 			query["since_id"] = since_id.ToString();
