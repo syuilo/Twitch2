@@ -114,6 +114,8 @@ namespace Twitch
 		/// <summary>
 		/// xAuthによってAccessToken,AccessTokenSecretを取得します。これはxAuthが許可されたトークンでのみ使用する事が出来ます。
 		/// </summary>
+		/// <param name="ScreenName">ユーザー名</param>
+		/// <param name="Password">パスワード</param>
 		/// <returns>TwitterContext。失敗した場合はNull</returns>
 		public async Task<Twitter> GetAccessTokenFromXAuth(string ScreenName, string Password)
 		{
