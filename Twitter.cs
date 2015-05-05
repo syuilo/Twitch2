@@ -201,11 +201,12 @@ namespace Twitch
 		/// <summary>
 		/// このTwitterオブジェクトのConsumerKey/ConsumerSecretに関連付けられたアプリケーションの連携認証フォームを規定のウェブ ブラウザで表示します。
 		/// </summary>
-		public async void Authorize()
+		public async Task<Twitter> Authorize()
 		{
 			this.Auth = new Authorize(this.ConsumerKey, this.ConsumerSecret);
 			await this.Auth.GetRequestToken();
 			this.Auth.ShowAuthorizeBrowser();
+			return this;
 		}
 
 		/// <summary>
