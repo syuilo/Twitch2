@@ -8,7 +8,7 @@ TwitterAPI 1.1、ストリーミング、xAuth認証などにも対応。
 ## はじめに
 まず
 ```CSharp
-var twitter = new Twitter("your consumer key", "your consumer secret");
+var tw = new Twitter("your consumer key", "your consumer secret");
 twitter.Authorize();
 ```
 とします(`your consumer key`にはあなたのアプリケーションの*ConsumerKey*を、`your consumer secret`にはあなたのアプリケーションの*ConsumerSecret*を設定してください)。
@@ -16,19 +16,19 @@ twitter.Authorize();
 すると規定のウェブブラウザで連携認証フォームが表示されます。ユーザーが連携を許可すると*PINコード*が得られます。
 次に、
 ```CSharp
-twitter = await twitter.AuthorizePin('got pin code');
+tw = await twitter.AuthorizePin('got pin code');
 ```
 とすることでTwitterAPIにアクセス出来るようになります(`got pin code`には取得できた*PINコード*を設定してください)。
 ここまでたった3文です。
 実際になにかつぶやいてみましょう:
 ```CSharp
-twitter.StatusesUpdate("Hello, Twitch!");
+tw.StatusesUpdate("Hello, Twitch!");
 ```
 さあどうでしょうか。タイムラインを確認してみてください。
 **無事にツイートが投稿されていれば成功です。**
 
 ### 上記のコードの解説
-`var twitter = new Twitter(...)`で***Twitterクラス(Twitch.Twitter)*のインスタンス**を作成しています。
+`var tw = new Twitter(...)`で***Twitterクラス(Twitch.Twitter)*のインスタンス**を作成しています。
 
 便宜上、この**「Twitterクラスのインスタンス」のことをTwitchでは*Twitterオブジェクト*と呼んでいます。**
 
