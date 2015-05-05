@@ -36,7 +36,7 @@ tw.StatusesUpdate("Hello, Twitch!");
 
 Twitterオブジェクトの`Authorize`メソッドの呼び出しでブラウザに認証フォームを表示させます。
 
-Twitterオブジェクトの`AuthorizePin`メソッドは、PINコードを受け取って、新たな認証されたユーザーのTwitterオブジェクトを返します(呼び出したTwitterオブジェクト自体が書き換わるわけではありません。**新たな**Twitterオブジェクトを返します)。
+Twitterオブジェクトの`AuthorizePin`メソッドは、PINコードを受け取って、認証されたユーザーのAccessToken、AccessTokenSecretなどが設定された新たなTwitterオブジェクトを返します(呼び出したTwitterオブジェクト自体が書き換わるわけではありません。**新たな**Twitterオブジェクトを返します)。
 
 ## ストリーミング
 Twitterの**ストリーミングAPI**を利用すると、リアルタイムでタイムラインを取得したりすることが出来ます。TwitchではこれらのストリーミングAPIをサポートしています。
