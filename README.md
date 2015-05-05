@@ -18,7 +18,7 @@ tw.Authorize();
 すると規定のウェブブラウザで連携認証フォームが表示されます。ユーザーが連携を許可すると*PINコード*が得られます。
 次に、
 ```CSharp
-tw = await twitter.AuthorizePin('got pin code');
+tw = await tw.AuthorizePin('got pin code');
 ```
 とすることでTwitterAPIにアクセス出来るようになります(`got pin code`には取得できた*PINコード*を設定してください)。
 ここまでたった3文です。
