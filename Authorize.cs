@@ -97,7 +97,7 @@ namespace Twitch
 			if (this.OAuthToken != null)
 				return new Uri(API.Urls.Oauth_Authorize + "?oauth_token=" + this.OAuthToken);
 			else
-				throw new NullReferenceException("リクエスト トークンが設定されていません。");
+				throw new ApplicationException("リクエスト トークンが設定されていません。GetRequestToken を呼び出してください。");
 		}
 
 		/// <summary>
@@ -141,7 +141,7 @@ namespace Twitch
 		public async Task<Twitter> GetAccessTokenFromScreenNameAndPassword(string ScreenName, string Password)
 		{
 			if (this.OAuthToken == null)
-				throw new ApplicationException("リクエスト トークンが設定されていません。");
+				throw new ApplicationException("リクエスト トークンが設定されていません。GetRequestToken を呼び出してください。");
 
 			try
 			{
@@ -149,10 +149,10 @@ namespace Twitch
 				{
 					string sorce = tws.DownloadString(TwitterBase.URL);
 
-					Regex reg = new Regex("<input type=\"hidden\" name=\"authenticity_token\" value=\"(?<token>.*?)\">",
+					var reg = new Regex("<input type=\"hidden\" name=\"authenticity_token\" value=\"(?<token>.*?)\">",
 									RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
-					Match m = reg.Match(sorce);
+					var m = reg.Match(sorce);
 					Debug.WriteLine("authenticity_token: " + m.Groups["token"].Value);
 
 					var ps = new System.Collections.Specialized.NameValueCollection();
@@ -199,7 +199,7 @@ namespace Twitch
 				string access_token = Utility.AnalyzeUrlQuery.Analyze(res, "oauth_token");
 				string access_token_secret = Utility.AnalyzeUrlQuery.Analyze(res, "oauth_token_secret");
 				string screenName = Utility.AnalyzeUrlQuery.Analyze(res, "screen_name");
-				Int64 id = Int64.Parse(Utility.AnalyzeUrlQuery.Analyze(res, "user_id"));
+				var id = Int64.Parse(Utility.AnalyzeUrlQuery.Analyze(res, "user_id"));
 
 				return new Twitter(this.ConsumerKey, this.ConsumerSecret, access_token, access_token_secret, screenName, id);
 			}
