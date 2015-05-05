@@ -80,6 +80,10 @@ public void StreamingCallback(object sender, StatusUpdatedEventArgs e)
 UserStreamのStreaming 接続は、様々な理由により予期せずに切断されることがあります。
 このとき、あらかじめStreamの*IsAutoReconnect*プロパティを`true`にしておくと、自動的に再接続を試みます。
 
+---
+
+TwitchでこれらのストリーミングAPIを利用すれば、所謂**エタフォ**(タイムラインに流れてきたツイートを自動でふぁぼる)も簡単に実装することが出来ます。
+
 ## カスタム リクエストの作成
 一般に公開されていないエンドポイントへのリクエストなど、Twitchが対応していないAPIへの独自のリクエストを送信したい場合は、*TwitterオブジェクトのRequestメソッド*を利用するか、または *TwitterRequest (Twitch.TwitterRequest) クラス* を利用して簡単にリクエストを作成できます。
 
