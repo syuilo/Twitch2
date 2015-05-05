@@ -34,19 +34,19 @@ namespace Twitch
 		/// <summary>
 		/// RequestToken
 		/// </summary>
-		private string OAuthToken
+		public string OAuthToken
 		{
 			get;
-			set;
+			private set;
 		}
 
 		/// <summary>
 		/// RequestTokenSecret
 		/// </summary>
-		private string OAuthTokenSecret
+		public string OAuthTokenSecret
 		{
 			get;
-			set;
+			private set;
 		}
 
 		/// <summary>
@@ -129,58 +129,6 @@ namespace Twitch
 			}
 			else
 				return null;
-		}
-
-		/// <summary>
-		/// 認証ページをスクレイピングし、ScreenName,PasswordからAccessToken,AccessTokenSecretを取得します。
-		/// <para />
-		/// ただし、このメソッドは、恒常的に使用できることを保証するものではありません。
-		/// Twitterの仕様変更によって、今後使用できなくなる可能性があります。
-		/// </summary>
-		/// <returns>TwitterContext。失敗した場合はNull</returns>
-		public async Task<Twitter> GetAccessTokenFromScreenNameAndPassword(string ScreenName, string Password)
-		{
-			if (this.OAuthToken == null)
-				throw new ApplicationException("リクエスト トークンが設定されていません。GetRequestToken を呼び出してください。");
-
-			try
-			{
-				using (var tws = new System.Net.WebClient())
-				{
-					string sorce = tws.DownloadString(TwitterBase.URL);
-
-					var reg = new Regex("<input type=\"hidden\" name=\"authenticity_token\" value=\"(?<token>.*?)\">",
-									RegexOptions.IgnoreCase | RegexOptions.Singleline);
-
-					var m = reg.Match(sorce);
-					Debug.WriteLine("authenticity_token: " + m.Groups["token"].Value);
-
-					var ps = new System.Collections.Specialized.NameValueCollection();
-					ps.Add("authenticity_token", m.Groups["token"].Value);
-					ps.Add("oauth_token", OAuthToken);
-					ps.Add("session[username_or_email]", ScreenName);
-					ps.Add("session[password]", Password);
-
-					using (var wc = new System.Net.WebClient())
-					{
-						byte[] resData = wc.UploadValues(API.Urls.Oauth_Authorize, ps);
-
-						string resText = System.Text.Encoding.UTF8.GetString(resData);
-
-						reg = new Regex("<code>(?<pin>.*?)</code>",
-							RegexOptions.IgnoreCase | RegexOptions.Singleline);
-
-						m = reg.Match(resText);
-						System.Diagnostics.Debug.WriteLine("pin: " + m.Groups["pin"].Value);
-
-						return await GetAccessTokenFromPinCode(m.Groups["pin"].Value);
-					}
-				}
-			}
-			catch
-			{
-				return null;
-			}
 		}
 
 		/// <summary>
