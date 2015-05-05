@@ -185,6 +185,20 @@ namespace Twitch
 		}
 
 		/// <summary>
+		/// 認証されたユーザーでTwitter APIへリクエストを送信し、非同期でレスポンスを取得します。
+		/// </summary>
+		/// <param name="method">リクエスト メソッド</param>
+		/// <param name="url">APIのURL。</param>
+		/// <param name="parameter">リクエストのパラメーター。</param>
+		/// <returns>APIから返された値(レスポンス)</returns>
+		public async Task<string> Request(
+			API.Method method, string url, StringDictionary parameter = null, string proxy = null)
+		{
+			return await new TwitterRequest(
+				this, method, new Uri(url), parameter, proxy).Request();
+		}
+
+		/// <summary>
 		/// このTwitterオブジェクトのConsumerKey/ConsumerSecretに関連付けられたアプリケーションの連携認証フォームを規定のウェブ ブラウザで表示します。
 		/// </summary>
 		public async void Authorize()
