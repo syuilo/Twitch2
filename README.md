@@ -90,6 +90,18 @@ query["oomr"] = "skrk";
 tw.Request(API.Method.POST, new Uri('https://api.twitter.com/hoge/huga.json'), query);
 ```
 
+# 初代Twitchからの変更点(初代Twitchを使っていた人向けのセクション)
+- *TwitterContext*は、*Twitter*に名称変更しました。
+- APIへのリクエストは、APIクラスのメンバメソッドにTwitterオブジェクトを渡す方式ではなく、Twitterオブジェクト自体がAPIリクエストメソッドを持つようになりました。これにより簡潔にAPIへリクエストを行うことが出来るようになりました。
+Before:
+```
+Twitch.Twitter.APIs.REST.Statuses.Update(tw, "櫻子可愛いですわ");
+```
+After:
+```
+tw.StatusesUpdate("櫻子可愛いですわ");
+```
+
 # License
 ms-pl
 
