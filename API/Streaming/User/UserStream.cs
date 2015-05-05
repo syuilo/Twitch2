@@ -12,6 +12,9 @@ namespace Twitch.Streaming
 		#region Events
 
 		#region BlockedEvent
+		/// <summary>
+		/// Blockedイベント ハンドラー
+		/// </summary>
 		public delegate void BlockedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -30,6 +33,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region UnBlockedEvent
+		/// <summary>
+		/// UnBlockedイベント ハンドラー
+		/// </summary>
 		public delegate void UnBlockedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -48,6 +54,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region FavoritedEvent
+		/// <summary>
+		/// Favoriteイベント ハンドラー
+		/// </summary>
 		public delegate void FavoritedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -66,6 +75,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region UnFavoritedEvent
+		/// <summary>
+		/// UnFavoritedイベント ハンドラー
+		/// </summary>
 		public delegate void UnFavoritedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -84,6 +96,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region FollowedEvent
+		/// <summary>
+		/// Followedイベント ハンドラー
+		/// </summary>
 		public delegate void FollowedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -102,6 +117,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region UnFollowedEvent
+		/// <summary>
+		/// UnFollowedイベント ハンドラー
+		/// </summary>
 		public delegate void UnFollowedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -120,6 +138,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region ListCreatedEvent
+		/// <summary>
+		/// ListCreatedイベント ハンドラー
+		/// </summary>
 		public delegate void ListCreatedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -138,6 +159,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region ListDestoryedEvent
+		/// <summary>
+		/// ListDestroyedイベント ハンドラー
+		/// </summary>
 		public delegate void ListDestoryedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -156,6 +180,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region ListUpdatedEvent
+		/// <summary>
+		/// ListUpdatedイベント ハンドラー
+		/// </summary>
 		public delegate void ListUpdatedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -174,6 +201,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region ListMemberAddedEvent
+		/// <summary>
+		/// ListMemberAddedイベント ハンドラー
+		/// </summary>
 		public delegate void ListMemberAddedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -192,6 +222,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region ListMemberRemovedEvent
+		/// <summary>
+		/// ListMemberRemovedイベント ハンドラー
+		/// </summary>
 		public delegate void ListMemberRemovedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -210,6 +243,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region ListUserSubscribedEvent
+		/// <summary>
+		/// ListUserSubscribedイベント ハンドラー
+		/// </summary>
 		public delegate void ListUserSubscribedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -228,6 +264,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region ListUserUnSubscribedEvent
+		/// <summary>
+		/// ListUserUnSubscribedイベント ハンドラー
+		/// </summary>
 		public delegate void ListUserUnSubscribedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -246,6 +285,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region UserUpdatedEvent
+		/// <summary>
+		/// UserUpdatedイベント ハンドラー
+		/// </summary>
 		public delegate void UserUpdatedEventHandler(object sender, StreamEventEventArgs e);
 
 		/// <summary>
@@ -265,6 +307,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region StatusUpdatedEvent
+		/// <summary>
+		/// StatusUpdatedイベント ハンドラー
+		/// </summary>
 		public delegate void StatusUpdatedEventHandler(object sender, StatusUpdatedEventArgs e);
 
 		/// <summary>
@@ -283,6 +328,9 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region SendFriendsListsMessagedEvent
+		/// <summary>
+		/// FriendsListsイベント ハンドラー
+		/// </summary>
 		public delegate void SendFriendsListsMessagedEventHandler(object sender, FriendsListsEventArgs e);
 
 		/// <summary>

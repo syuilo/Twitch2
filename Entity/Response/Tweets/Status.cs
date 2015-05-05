@@ -12,9 +12,16 @@ namespace Twitch.Entity.Response.Tweets
 	[Serializable]
 	public class Status : TwitterResponse
 	{
+		/// <summary>
+		/// 空のStatusエンティティを初期化します。
+		/// </summary>
 		public Status()
 			: base() { }
 
+		/// <summary>
+		/// データ ソースを与えてエンティティを初期化します。
+		/// </summary>
+		/// <param name="source">Twitterから送信されたデータ ソース</param>
 		public Status(string source)
 			: base(source)
 		{
