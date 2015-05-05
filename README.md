@@ -6,10 +6,12 @@ TwitterAPI 1.1、ストリーミング、xAuth認証などにも対応。
 # 簡単なドキュメンテーション
 **C#**での解説となります。ご了承ください。
 ## はじめに
+Twitchの使い方の例として、タイムラインにツイートを投稿するまでの一連の流れを見ていきます。
+
 まず
 ```CSharp
 var tw = new Twitter("your consumer key", "your consumer secret");
-twitter.Authorize();
+tw.Authorize();
 ```
 とします(`your consumer key`にはあなたのアプリケーションの*ConsumerKey*を、`your consumer secret`にはあなたのアプリケーションの*ConsumerSecret*を設定してください)。
 
