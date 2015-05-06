@@ -66,6 +66,7 @@
     <Compile Include="API\Urls.cs" />
     <Compile Include="Authorize.cs" />
     <Compile Include="Entity\Response\List.cs" />
+    <Compile Include="Entity\Response\Relationship.cs" />
     <Compile Include="ListMode.cs" />
     <Compile Include="OAuth\Core.cs" />
     <Compile Include="OAuth\OAuthBase.cs" />
