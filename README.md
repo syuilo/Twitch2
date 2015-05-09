@@ -103,7 +103,7 @@ TwitchでこれらのストリーミングAPIを利用すれば、所謂**エタ
 
 ### TwitterオブジェクトのRequestメソッドを利用する例
 ```
-var query = new StringDictionary();
+var query = new Dictionary<string, string>();
 query["hrtn"] = "hmwr";
 query["oomr"] = "skrk";
 
