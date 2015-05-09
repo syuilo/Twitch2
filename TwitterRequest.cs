@@ -146,7 +146,7 @@ namespace Twitch
 				}
 				if (this.Method == Method.POST)
 				{
-					response = await client.PostAsync(this.Url, new FormUrlEncodedContent(this.Parameter));
+					response = await client.PostAsync(this.Url, new FormUrlEncodedContent((this.Parameter != null) ? this.Parameter : new Dictionary<string, string>()));
 				}
 
 				// Read response
