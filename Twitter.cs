@@ -146,6 +146,7 @@ namespace Twitch
 		{
 			this.ConsumerKey = consumerKey;
 			this.ConsumerSecret = consumerSecret;
+			this.Auth = new Authorize(this.ConsumerKey, this.ConsumerSecret);
 		}
 
 		/// <summary>
@@ -203,7 +204,6 @@ namespace Twitch
 		/// </summary>
 		public async Task<Twitter> Authorize()
 		{
-			this.Auth = new Authorize(this.ConsumerKey, this.ConsumerSecret);
 			await this.Auth.GetRequestToken();
 			this.Auth.ShowAuthorizeBrowser();
 			return this;
@@ -217,6 +217,17 @@ namespace Twitch
 		public async Task<Twitter> AuthorizePin(string pin)
 		{
 			return await this.Auth.GetAccessTokenFromPinCode(pin);
+		}
+
+		/// <summary>
+		/// xAuthによってAccessToken,AccessTokenSecretを取得します。これはxAuthが許可されたアプリケーションでのみ使用する事が出来ます。
+		/// </summary>
+		/// <param name="screenName">ユーザー名</param>
+		/// <param name="password">パスワード</param>
+		/// <returns>連携されたユーザーのTwitterオブジェクト</returns>
+		public async Task<Twitter> AuthorizeXAuth(string screenName, string password)
+		{
+			return await this.Auth.GetAccessTokenFromXAuth(screenName, password);
 		}
 	}
 }
