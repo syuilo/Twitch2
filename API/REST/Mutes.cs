@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
 using Twitch.Entity;
@@ -16,7 +17,7 @@ namespace Twitch
 		public async Task<User> MutesUsersCreate(
 			string screen_name = null, Int64? id = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["screen_name"] = screen_name;
 			query["user_id"] = id.ToString();
 
@@ -35,7 +36,7 @@ namespace Twitch
 		public async Task<User> MutesUsersDestroy(
 			string screen_name = null, Int64? id = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["screen_name"] = screen_name;
 			query["user_id"] = id.ToString();
 

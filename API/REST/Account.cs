@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
 using Twitch.Entity;
@@ -21,7 +22,7 @@ namespace Twitch
 			string location = null,
 			string description = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			if (name != null) query["name"] = name;
 			if (url != null) query["url"] = url.ToString();
 			if (location != null) query["location"] = location;
@@ -37,7 +38,7 @@ namespace Twitch
 		/// <returns>更新されたユーザー。</returns>
 		public async Task<User> UpdateProfileImage(string image)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["image"] = image;
 
 			return new User(await this.Request(API.Method.POST, new Uri(API.Urls.Account_UpdateProfileImage), query));

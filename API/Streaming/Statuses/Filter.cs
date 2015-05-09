@@ -54,7 +54,7 @@ namespace Twitch.Streaming.Statuses
 			this.Host = "stream.twitter.com";
 			this.Method = Method.POST;
 
-			StringDictionary query = new StringDictionary();
+			Dictionary<string, string> query = new Dictionary<string, string>();
 
 			query["follow"] = string.Join(",", follow);
 

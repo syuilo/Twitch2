@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace Twitch
 		public async Task<string> DirectMessagesNew(
 			string text, string screen_name = null, Int64? id = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["text"] = text;
 			query["screen_name"] = screen_name;
 			query["user_id"] = id.ToString();

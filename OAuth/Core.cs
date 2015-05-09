@@ -21,7 +21,7 @@ namespace Twitch.OAuth
 		/// <param name="requestUrl"></param>
 		/// <param name="queryDictionary"></param>
 		/// <returns></returns>
-		public static string GenerateRequestHeader(Twitter context, string method, string requestUrl, StringDictionary queryDictionary = null)
+		public static string GenerateRequestHeader(Twitter context, string method, string requestUrl, Dictionary<string, string> queryDictionary = null)
 		{
 			Debug.WriteLine("-\t## リクエスト ヘッダーを構築します");
 
@@ -65,7 +65,7 @@ namespace Twitch.OAuth
 		/// <param name="oAuthVersion">OAuthのバージョン文字列。</param>
 		/// <param name="QueryDictionary">リクエストのパラメータ。</param>
 		/// <returns></returns>
-		public static string GenerateSignature(Twitter context, string method, string url, string nonce, string signatureMethod, string timeStamp, string oAuthVersion, StringDictionary QueryDictionary = null)
+		public static string GenerateSignature(Twitter context, string method, string url, string nonce, string signatureMethod, string timeStamp, string oAuthVersion, Dictionary<string, string> QueryDictionary = null)
 		{
 			Debug.WriteLine("-\t-\t## シグネチャを生成します");
 
@@ -80,7 +80,7 @@ namespace Twitch.OAuth
 			// Add parameters to request parameter
 			if (QueryDictionary != null)
 			{
-				foreach (DictionaryEntry k in QueryDictionary)
+				foreach (var k in QueryDictionary)
 				{
 					if (k.Value != null)
 						parameters.Add((string)k.Key, (string)k.Value);

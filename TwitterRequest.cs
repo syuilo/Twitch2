@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Specialized;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -10,6 +10,7 @@ using System.Diagnostics;
 
 using Twitch.OAuth;
 using Twitch.API;
+
 
 namespace Twitch
 {
@@ -29,7 +30,7 @@ namespace Twitch
 			Twitter twitter = null,
 			Method method = Method.POST,
 			Uri url = null,
-			StringDictionary query = null,
+			Dictionary<string, string> query = null,
 			string proxy = null,
 			string userAgent = null)
 		{
@@ -72,7 +73,7 @@ namespace Twitch
 		/// <summary>
 		/// リクエストのパラメータ。
 		/// </summary>
-		public StringDictionary Parameter
+		public Dictionary<string, string> Parameter
 		{
 			get;
 			set;
@@ -106,7 +107,7 @@ namespace Twitch
 
 			if (this.Parameter != null)
 			{
-				var para = from DictionaryEntry k in this.Parameter
+				var para = from k in this.Parameter
 						   select (k.Value != null)
 						   ? Core.UrlEncode((string)k.Key, Encoding.UTF8) + '=' + Core.UrlEncode((string)k.Value, Encoding.UTF8)
 						   : null;

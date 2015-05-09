@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Specialized;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Twitch
@@ -178,7 +178,7 @@ namespace Twitch
 		/// <param name="parameter">リクエストのパラメーター。</param>
 		/// <returns>APIから返された値(レスポンス)</returns>
 		public async Task<string> Request(
-			API.Method method, System.Uri url, StringDictionary parameter = null, string proxy = null)
+			API.Method method, System.Uri url, Dictionary<string, string> parameter = null, string proxy = null)
 		{
 			return await new TwitterRequest(
 				this, method, url, parameter, proxy).Request();
@@ -192,7 +192,7 @@ namespace Twitch
 		/// <param name="parameter">リクエストのパラメーター。</param>
 		/// <returns>APIから返された値(レスポンス)</returns>
 		public async Task<string> Request(
-			API.Method method, string url, StringDictionary parameter = null, string proxy = null)
+			API.Method method, string url, Dictionary<string, string> parameter = null, string proxy = null)
 		{
 			return await new TwitterRequest(
 				this, method, new Uri(url), parameter, proxy).Request();

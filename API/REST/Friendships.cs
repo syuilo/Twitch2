@@ -22,7 +22,7 @@ namespace Twitch
 			Int64? id = null,
 			bool follow = false)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["screen_name"] = screen_name;
 			query["user_id"] = id.ToString();
 			query["follow"] = follow.ToString();
@@ -43,7 +43,7 @@ namespace Twitch
 			string screen_name = null,
 			Int64? id = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["screen_name"] = screen_name;
 			query["user_id"] = id.ToString();
 

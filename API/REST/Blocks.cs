@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
 using Twitch.Entity;
@@ -15,7 +16,7 @@ namespace Twitch
 		/// <returns>ブロックされたユーザー</returns>
 		public async Task<User> BlocksCreate(string screen_name = null, Int64? id = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["screen_name"] = screen_name;
 			query["user_id"] = id.ToString();
 
@@ -33,7 +34,7 @@ namespace Twitch
 		/// <returns>ブロックを解除されたユーザー</returns>
 		public async Task<User> BlocksDestroy(string screen_name = null, Int64? id = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["screen_name"] = screen_name;
 			query["user_id"] = id.ToString();
 

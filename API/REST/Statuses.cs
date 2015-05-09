@@ -33,7 +33,7 @@ namespace Twitch
 				throw new ArgumentException("since_id と max_id を同時に指定することはできません。");
 			}
 
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["count"] = count.ToString();
 			query["since_id"] = since_id.ToString();
 			query["max_id"] = max_id.ToString();
@@ -83,7 +83,7 @@ namespace Twitch
 				throw new ArgumentException("since_id と max_id を同時に指定することはできません。");
 			}
 
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			if (user_id != string.Empty)
 				query["user_id"] = user_id;
 			else if (screen_name != string.Empty)
@@ -132,7 +132,7 @@ namespace Twitch
 				throw new ArgumentException("since_id と max_id を同時に指定することはできません。");
 			}
 
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["count"] = count.ToString();
 			query["since_id"] = since_id.ToString();
 			query["max_id"] = max_id.ToString();
@@ -163,7 +163,7 @@ namespace Twitch
 			string status,
 			Int64? in_reply_to_status_id = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["status"] = status;
 			query["in_reply_to_status_id"] = in_reply_to_status_id.ToString();
 
@@ -179,7 +179,7 @@ namespace Twitch
 		public async Task<Status> StatusesRetweet(
 			Int64 id)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["id"] = id.ToString();
 
 			return new Status(
@@ -194,7 +194,7 @@ namespace Twitch
 		public async Task<Status> StatusesShow(
 			Int64 id)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["id"] = id.ToString();
 
 			return new Status(

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
 using Twitch.Entity;
@@ -22,7 +23,7 @@ namespace Twitch
 			Int64? user_id = null,
 			string screen_name = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["user_id"] = user_id.ToString();
 			query["screen_name"] = screen_name;
 
@@ -45,7 +46,7 @@ namespace Twitch
 			Int64? user_id = null,
 			string screen_name = null)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["user_id"] = user_id.ToString();
 			query["screen_name"] = screen_name;
 

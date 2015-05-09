@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Specialized;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -231,7 +231,7 @@ namespace Twitch.Streaming
 		/// <summary>
 		/// リクエストのパラメータ。
 		/// </summary>
-		public StringDictionary Parameter
+		public Dictionary<string, string> Parameter
 		{
 			get;
 			set;

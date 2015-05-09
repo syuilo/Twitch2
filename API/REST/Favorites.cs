@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
 using Twitch.Entity;
@@ -14,7 +15,7 @@ namespace Twitch
 		/// <returns>対象のツイート</returns>
 		public async Task<Status> FavoritesCreate(Int64 id)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["id"] = id.ToString();
 
 			string res = await this.Request(API.Method.POST, new Uri(API.Urls.Favorites_Create), query);
@@ -28,7 +29,7 @@ namespace Twitch
 		/// <returns>対象のツイート</returns>
 		public async Task<Status> FavoritesDestroy(Int64 id)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["id"] = id.ToString();
 
 			string res = await this.Request(API.Method.POST, new Uri(API.Urls.Favorites_Destroy), query);

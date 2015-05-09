@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace Twitch
 		/// <returns></returns>
 		public async Task<string> OauthAccessToken(string oauthVerifier)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["oauth_verifier"] = oauthVerifier;
 
 			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
@@ -36,7 +37,7 @@ namespace Twitch
 		/// <returns></returns>
 		public async Task<string> OauthAccessToken(string xAuthUsername, string xAuthPassword)
 		{
-			var query = new StringDictionary();
+			var query = new Dictionary<string, string>();
 			query["x_auth_username"] = xAuthUsername;
 			query["x_auth_password"] = xAuthPassword;
 			query["x_auth_mode"] = "client_auth";
