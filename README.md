@@ -64,7 +64,7 @@ stream.StatusUpdated +=
 // 接続を開始
 stream.Connect();
 ```
-上記のコードに加え、ツイートを受け取るイベント ハンドラーを作成する必要があります。
+上記のコードに加え、ツイートを受け取るイベントハンドラーを作成する必要があります。
 以下はその例です。
 ```CSharp
 public void StreamingCallback(object sender, StatusUpdatedEventArgs e)
@@ -73,22 +73,20 @@ public void StreamingCallback(object sender, StatusUpdatedEventArgs e)
     Console.WriteLine(e.Status.Text);
 }
 ```
+外部にイベントハンドラーを作成せずに、ラムダ式を使っても書けます。
+```CSharp
+stream.StatusUpdated += (object _, StatusUpdatedEventArgs e) =>
+{
+    // ツイートを表示
+    Console.WriteLine(e.Status.Text);
+};
+```
 このプログラムを実行すると、コンソールにリアルタイム&非同期でユーザーのホーム タイムラインが表示されていきます。
 このように、接続を開始すると、継続してTwitterからStream メッセージが送信されていきます。
 イベント メッセージを受信すると、それに対応したイベントが発行されます。これには通常のツイート イベントも含まれます。
 
 UserStreamのStreaming 接続は、様々な理由により予期せずに切断されることがあります。
 このとき、あらかじめStreamの*IsAutoReconnect*プロパティを`true`にしておくと、自動的に再接続を試みます。
-
-### ラムダ式を使う
-上記のコードは、ラムダ式を使ってもっと簡潔に書けます。
-```CSharp
-stream.StatusUpdated += (object _, StatusUpdatedEventArgs e) =>
-{
-			// ツイートを表示
-				Console.WriteLine(e.Status.Text);
-};
-```
 
 ---
 
