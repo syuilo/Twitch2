@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Net.Http;
 
 using Twitch.OAuth;
 using Twitch.API;
@@ -109,55 +110,52 @@ namespace Twitch
 			{
 				var para = from k in this.Parameter
 						   select (k.Value != null)
-						   ? Core.UrlEncode((string)k.Key, Encoding.UTF8) + '=' + Core.UrlEncode((string)k.Value, Encoding.UTF8)
+						   ? Core.UrlEncode(k.Key, Encoding.UTF8) + '=' + Core.UrlEncode(k.Value, Encoding.UTF8)
 						   : null;
 
 				data = String.Join("&", para.ToArray());
 
 				Debug.WriteLine(data.Length > 1000 ? "## リクエストデータ構築完了 : (1000文字以上)" : "## リクエストデータ構築完了 : " + data);
 
-				if (Method == Method.GET)
+				if (this.Method == Method.GET)
 					url += '?' + data;
 			}
 
 			// Create request
-			var request = (HttpWebRequest)WebRequest.Create(url);
+			var clientHandler = new HttpClientHandler();
+			var client = new HttpClient(clientHandler);
 
 			if (this.Proxy != null)
-				request.Proxy = new WebProxy(this.Proxy);
+				clientHandler.Proxy = new WebProxy(this.Proxy);
 
-			request.Method = Method.ToString();
-			request.ContentType = "application/x-www-form-urlencoded";
-			request.Host = "api.twitter.com";
-			request.Headers["Authorization"] =
+			client.DefaultRequestHeaders.Add("Authorization",
 				Core.GenerateRequestHeader(
-					this.Twitter, Method.ToString(), this.Url.ToString(), this.Parameter);
+					this.Twitter, this.Method.ToString(), this.Url.ToString(), this.Parameter));
 
 			if (!String.IsNullOrEmpty(this.UserAgent))
-				request.UserAgent = this.UserAgent;
-
-			if (Method == Method.POST && this.Parameter != null)
-			{
-				// Write request data
-				using (StreamWriter streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
-					await streamWriter.WriteAsync(data);
-			}
+				client.DefaultRequestHeaders.Add("User-Agent", this.UserAgent);
 
 			Debug.WriteLine("## リクエストを送信します...");
+
+			HttpResponseMessage response = null;
 
 			try
 			{
 				// Send request
-				var response = (HttpWebResponse)await request.GetResponseAsync();
+				if (this.Method == Method.GET)
+				{
+					response = await client.GetAsync(url);
+				}
+				if (this.Method == Method.POST)
+				{
+					response = await client.PostAsync(this.Url, new FormUrlEncodedContent(this.Parameter));
+				}
 
 				// Read response
-				using (StreamReader responseDataStream = new StreamReader(response.GetResponseStream()))
-				{
-					var receive = await responseDataStream.ReadToEndAsync();
+				var receive = await response.Content.ReadAsStringAsync();
 
-					Debug.WriteLine("## " + response.StatusCode + " " + response.StatusDescription + " : " + receive + "\r\n--------------------");
-					return receive;
-				}
+				Debug.WriteLine("## " + response.StatusCode + " " + response.ReasonPhrase + " : " + receive + "\r\n--------------------");
+				return receive;
 			}
 			catch (WebException ex)
 			{
