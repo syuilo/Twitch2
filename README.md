@@ -4,7 +4,10 @@
 TwitterAPI 1.1、ストリーミング、xAuth認証などにも対応。
 
 # ダウンロード
-[ここ](http://syuilo.com/Twitch.zip)
+**[ここ](http://syuilo.com/Twitch.zip)**
+
+付属のXMLも一緒に設置することで、インテリセンスの恩恵を受けられます。
+![](http://syuilo.com/twitch/twitchintellisense.png)
 
 # 簡単なドキュメンテーション
 **C#**での解説となります。ご了承ください。
