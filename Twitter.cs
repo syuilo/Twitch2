@@ -81,7 +81,7 @@ namespace Twitch
 			}
 		}
 
-		private Authorize Auth
+		private Authorizer Auth
 		{
 			get;
 			set;
@@ -146,7 +146,7 @@ namespace Twitch
 		{
 			this.ConsumerKey = consumerKey;
 			this.ConsumerSecret = consumerSecret;
-			this.Auth = new Authorize(this.ConsumerKey, this.ConsumerSecret);
+			this.Auth = new Authorizer(this.ConsumerKey, this.ConsumerSecret);
 		}
 
 		/// <summary>

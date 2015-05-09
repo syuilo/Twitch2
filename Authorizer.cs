@@ -11,7 +11,7 @@ namespace Twitch
 	/// <summary>
 	/// 一連のアカウント認証処理を行うクラスです。
 	/// </summary>
-	public class Authorize
+	public class Authorizer
 	{
 		/// <summary>
 		/// アプリケーションのConsumerKey。
@@ -54,7 +54,7 @@ namespace Twitch
 		/// </summary>
 		/// <param name="consumerKey">アプリケーションのConsumerKey</param>
 		/// <param name="consumerSecret">アプリケーションのConsumerSecret</param>
-		public Authorize(string consumerKey, string consumerSecret)
+		public Authorizer(string consumerKey, string consumerSecret)
 		{
 			this.ConsumerKey = consumerKey;
 			this.ConsumerSecret = consumerSecret;
