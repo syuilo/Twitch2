@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\ApiException.cs" />
     <Compile Include="API\Method.cs" />
     <Compile Include="API\REST\Account.cs" />
     <Compile Include="API\REST\Blocks.cs" />

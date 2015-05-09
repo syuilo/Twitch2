@@ -158,12 +158,13 @@ namespace Twitch
 					return receive;
 				}
 			}
-			catch (System.Net.WebException ex)
+			catch (WebException ex)
 			{
-				if (ex.Status == System.Net.WebExceptionStatus.ProtocolError)
+				if (ex.Status == WebExceptionStatus.ProtocolError)
 				{
+					var res = (HttpWebResponse)ex.Response;
 					Debug.WriteLine("## HTTPエラー : " + ex.Message + "\r\n--------------------");
-					throw ex;
+					throw new ApiException(res.StatusCode, res.StatusDescription);
 				}
 				else
 				{
