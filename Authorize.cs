@@ -117,10 +117,10 @@ namespace Twitch
 		/// <param name="ScreenName">ユーザー名</param>
 		/// <param name="Password">パスワード</param>
 		/// <returns>TwitterContext。失敗した場合はNull</returns>
-		public async Task<Twitter> GetAccessTokenFromXAuth(string ScreenName, string Password)
+		public async Task<Twitter> GetAccessTokenFromXAuth(string screenName, string password)
 		{
 			var tw = new Twitter(this.ConsumerKey, this.ConsumerSecret);
-			string res = await tw.OauthAccessToken(ScreenName, Password);
+			string res = await tw.OauthAccessToken(screenName, password);
 
 			if (!string.IsNullOrEmpty(res))
 			{
