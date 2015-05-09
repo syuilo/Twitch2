@@ -210,7 +210,7 @@ namespace Twitch
 		}
 
 		/// <summary>
-		/// 認証フォームで得られたPINコードを基に連携されたユーザーの新しいTwitterオブジェクトを取得します。
+		/// 認証フォームで得られたPINコードを基に、連携されたユーザーのTwitterオブジェクトを取得します。
 		/// </summary>
 		/// <param name="pin">PINコード</param>
 		/// <returns>連携されたユーザーのTwitterオブジェクト</returns>
@@ -220,7 +220,8 @@ namespace Twitch
 		}
 
 		/// <summary>
-		/// xAuthによってユーザーの新しいTwitterオブジェクトを取得します。これはxAuthが許可されたアプリケーションでのみ使用する事が出来ます。
+		/// xAuth認証を用いてユーザーのTwitterオブジェクトを取得します。<para />
+		/// (これはxAuthが許可されたアプリケーションでのみ使用する事が出来ます。)
 		/// </summary>
 		/// <param name="screenName">ユーザー名</param>
 		/// <param name="password">パスワード</param>
