@@ -1,4 +1,4 @@
-﻿/*================================================================
+﻿/*====================================================================
  * Json
  * ver 0.0.0.0
  *
@@ -6,7 +6,7 @@
  * licensed under the MIT license
  * http://syuilo.com/
  * https://github.com/syuilo/Json
- *================================================================*/
+ *====================================================================*/
 
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace Twitch.Utility
 {
 	public static class Json
 	{
-		public static Dictionary<string, object> Deserialize(string source)
+		public static object Deserialize(string source)
 		{
 			return new Analyzer(source).Parse();
 		}
@@ -130,17 +130,20 @@ namespace Twitch.Utility
 				this.Source = source.Trim();
 			}
 
-			public Dictionary<string, object> Parse()
+			public object Parse()
 			{
 				if (String.IsNullOrEmpty(this.Source))
 					throw new FormatException("データソースが空です。");
 
-				var obj = new Dictionary<string, object>();
+				var obj = new object();
 
 				switch (this.GetTokenType(this.ReadAndNext()))
 				{
 					case TokenType.OpenCurlyBracket:
 						obj = this.AnalyzeObject();
+						break;
+					case TokenType.OpenSquareBracket:
+						obj = this.AnalyzeArray();
 						break;
 					default:
 						throw new FormatException("Invalid format.");
@@ -245,16 +248,19 @@ namespace Twitch.Utility
 							break;
 
 						default:
+							// Boolean (true)
 							if (this.Source.Substring(this.Cursor - 1, TRUE.Length) == TRUE)
 							{
 								this.Next(TRUE.Length - 1);
 								return true;
 							}
+							// Boolean (false)
 							else if (this.Source.Substring(this.Cursor - 1, FALSE.Length) == FALSE)
 							{
 								this.Next(FALSE.Length - 1);
 								return false;
 							}
+							// Null
 							else if (this.Source.Substring(this.Cursor - 1, NULL.Length) == NULL)
 							{
 								this.Next(NULL.Length - 1);
