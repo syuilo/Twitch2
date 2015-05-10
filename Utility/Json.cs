@@ -8,6 +8,11 @@ namespace Twitch.Utility
 	/// </summary>
 	public static class Json
 	{
+		/// <summary>
+		/// JSON文字列をオブジェクトに復元します。
+		/// </summary>
+		/// <param name="source"></param>
+		/// <returns></returns>
 		public static Dictionary<string, object> Deserialize(string source)
 		{
 			return new Analyzer(source).Parse();
@@ -26,6 +31,12 @@ namespace Twitch.Utility
 				get;
 				set;
 			}
+
+			private const string TRUE = "true";
+
+			private const string FALSE = "false";
+
+			private const string NULL = "null";
 
 			private enum TokenType
 			{
@@ -70,6 +81,11 @@ namespace Twitch.Utility
 				Number,
 
 				/// <summary>
+				/// -
+				/// </summary>
+				Hyphen,
+
+				/// <summary>
 				/// \
 				/// </summary>
 				Escape,
@@ -104,6 +120,8 @@ namespace Twitch.Utility
 						return TokenType.Colon;
 					case ',':
 						return TokenType.Comma;
+					case '-':
+						return TokenType.Hyphen;
 					case '0':
 					case '1':
 					case '2':
@@ -133,9 +151,12 @@ namespace Twitch.Utility
 				return c;
 			}
 
-			private void Next()
+			private void Next(int? step = null)
 			{
-				this.Cursor++;
+				if (step == null)
+					this.Cursor++;
+				else
+					this.Cursor += (int)step;
 			}
 
 			private void Back()
@@ -212,13 +233,30 @@ namespace Twitch.Utility
 									return this.AnalyzeString();
 								// Number
 								case TokenType.Number:
+								case TokenType.Hyphen:
 									return this.AnalyzeNumber();
 
 								case TokenType.PrettyToken:
 								case TokenType.Colon:
 									break;
 								default:
-									throw new FormatException("Invalid format.");
+									if (this.Source.Substring(this.Cursor - 1, TRUE.Length) == TRUE)
+									{
+										this.Next(TRUE.Length - 1);
+										return true;
+									}
+									else if (this.Source.Substring(this.Cursor - 1, FALSE.Length) == FALSE)
+									{
+										this.Next(FALSE.Length - 1);
+										return false;
+									}
+									else if (this.Source.Substring(this.Cursor - 1, NULL.Length) == NULL)
+									{
+										this.Next(NULL.Length - 1);
+										return null;
+									}
+									else
+										throw new FormatException("Invalid format.");
 							}
 						}
 
@@ -256,6 +294,7 @@ namespace Twitch.Utility
 							break;
 						// Number
 						case TokenType.Number:
+						case TokenType.Hyphen:
 							array.Add(this.AnalyzeNumber());
 							break;
 
@@ -264,7 +303,26 @@ namespace Twitch.Utility
 						case TokenType.Comma:
 							break;
 						default:
-							throw new FormatException("Invalid format.");
+							if (this.Source.Substring(this.Cursor - 1, TRUE.Length) == TRUE)
+							{
+								this.Next(TRUE.Length - 1);
+								array.Add(true);
+								break;
+							}
+							else if (this.Source.Substring(this.Cursor - 1, FALSE.Length) == FALSE)
+							{
+								this.Next(FALSE.Length - 1);
+								array.Add(false);
+								break;
+							}
+							else if (this.Source.Substring(this.Cursor - 1, NULL.Length) == NULL)
+							{
+								this.Next(NULL.Length - 1);
+								array.Add(null);
+								break;
+							}
+							else
+								throw new FormatException("Invalid format.");
 					}
 				}
 
@@ -280,6 +338,9 @@ namespace Twitch.Utility
 					var c = this.ReadAndNext();
 					switch (this.GetTokenType(c))
 					{
+						case TokenType.Escape:
+							this.Next();
+							break;
 						case TokenType.DoubleQuote:
 							return key;
 						default:
@@ -300,6 +361,9 @@ namespace Twitch.Utility
 					var c = this.ReadAndNext();
 					switch (this.GetTokenType(c))
 					{
+						case TokenType.Escape:
+							this.Next();
+							break;
 						case TokenType.DoubleQuote:
 							return str;
 						default:
@@ -322,6 +386,7 @@ namespace Twitch.Utility
 					switch (this.GetTokenType(c))
 					{
 						case TokenType.Number:
+						case TokenType.Hyphen:
 							num += c;
 							this.Next();
 							break;
