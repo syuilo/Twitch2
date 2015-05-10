@@ -12,9 +12,15 @@ namespace Twitch.Entity
 	[Serializable]
 	abstract public class TwitterResponse
 	{
-		// Example : Thu Jan 18 00:10:45 +0000 2007
+		/// <summary>
+		/// Twitterから送信される時間の形式<para />
+		/// Example : Thu Jan 18 00:10:45 +0000 2007
+		/// </summary>
 		public const string DateTimeFormat = "ddd MMM d HH':'mm':'ss zzz yyyy";
 
+		/// <summary>
+		/// TwitterResponseを初期化します。
+		/// </summary>
 		public TwitterResponse()
 		{
 			this.StringJson = null;
