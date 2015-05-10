@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*================================================================
+ * Json
+ * ver 0.0.0.0
+ *
+ * created and maintained by syuilo <syuilotan@yahoo.co.jp>
+ * licensed under the MIT license
+ * http://syuilo.com/
+ * https://github.com/syuilo/Json
+ *================================================================*/
+
+using System;
 using System.Collections.Generic;
 
 namespace Twitch.Utility
@@ -140,7 +150,6 @@ namespace Twitch.Utility
 
 			private Char Read(int pos = 0)
 			{
-				Console.Write(this.Source[this.Cursor + pos]);
 				return this.Source[this.Cursor + pos];
 			}
 
