@@ -206,6 +206,8 @@ namespace Twitch
 		{
 			await this.Auth.GetRequestToken();
 			this.Auth.ShowAuthorizeBrowser();
+			
+			// C#においてメソッドチェーンは可読性の低下およびthisを返すことによる意図を把握出来ない場合に伴う保守性の低下を引き起こすためよろしくないらしいけど、ここだけはどうしてもメソッドチェーン出来るようにさせたかったのでthisを返しています。
 			return this;
 		}
 

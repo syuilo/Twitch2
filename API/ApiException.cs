@@ -6,7 +6,7 @@ namespace Twitch.API
 	/// <summary>
 	/// Twitter APIで発生するエラー。
 	/// </summary>
-	public class ApiException : Exception
+	public class ApiException : ApplicationException
 	{
 		public ApiException() { }
 
