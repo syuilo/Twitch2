@@ -74,6 +74,27 @@ namespace Twitch.Streaming
 		}
 		#endregion
 
+		#region FavoritedRetweetEvent
+		/// <summary>
+		/// FavoriteRetweetイベント ハンドラー
+		/// </summary>
+		public delegate void FavoritedRetweetEventHandler(object sender, StreamEventEventArgs e);
+
+		/// <summary>
+		/// リツイートがお気に入りに登録されました。
+		/// </summary>
+		public event FavoritedRetweetEventHandler FavoritedRetweet;
+
+		/// <summary>
+		/// FavoritedRetweet イベントを発行します。
+		/// </summary>
+		protected virtual void OnFavoritedRetweet(StreamEventEventArgs e)
+		{
+			if (FavoritedRetweet != null)
+				FavoritedRetweet(this, e);
+		}
+		#endregion
+
 		#region UnFavoritedEvent
 		/// <summary>
 		/// UnFavoritedイベント ハンドラー
@@ -349,21 +370,66 @@ namespace Twitch.Streaming
 		#endregion
 
 		#region RetweetedEvent
-		//public delegate void RetweetedEventHandler(User target, User source, string createdAt);
+		/// <summary>
+		/// Retweetedイベント ハンドラー
+		/// </summary>
+		public delegate void RetweetedEventHandler(object sender, StreamEventEventArgs e);
 
-		///// <summary>
-		///// ツイートがリツイートされました。
-		///// </summary>
-		//public event RetweetedEventHandler Retweeted = delegate { };
-		//#endregion
+		/// <summary>
+		/// ツイートがリツイートされました。
+		/// </summary>
+		public event RetweetedEventHandler Retweeted;
 
-		//#region UnRetweetedEvent
-		//public delegate void UnRetweetedEventHandler(User target, User source, string createdAt);
+		/// <summary>
+		/// Retweeted イベントを発行します。
+		/// </summary>
+		protected virtual void OnRetweeted(StreamEventEventArgs e)
+		{
+			if (Retweeted != null)
+				Retweeted(this, e);
+		}
+		#endregion
 
-		///// <summary>
-		///// ツイートのリツイートが取り消されました。
-		///// </summary>
-		//public event UnRetweetedEventHandler UnRetweeted = delegate { };
+		#region RetweetedRetweetEvent
+		/// <summary>
+		/// RetweetedRetweetイベント ハンドラー
+		/// </summary>
+		public delegate void RetweetedRetweetEventHandler(object sender, StreamEventEventArgs e);
+
+		/// <summary>
+		/// リツイートがリツイートされました。
+		/// </summary>
+		public event RetweetedRetweetEventHandler RetweetedRetweet;
+
+		/// <summary>
+		/// RetweetedRetweet イベントを発行します。
+		/// </summary>
+		protected virtual void OnRetweetedRetweet(StreamEventEventArgs e)
+		{
+			if (RetweetedRetweet != null)
+				RetweetedRetweet(this, e);
+		}
+		#endregion
+
+		#region UnRetweetedEvent
+		/// <summary>
+		/// Retweetedイベント ハンドラー
+		/// </summary>
+		public delegate void UnRetweetedEventHandler(object sender, StreamEventEventArgs e);
+
+		/// <summary>
+		/// ツイートのリツイートが取り消されました。
+		/// </summary>
+		public event UnRetweetedEventHandler UnRetweeted;
+
+		/// <summary>
+		/// UnRetweeted イベントを発行します。
+		/// </summary>
+		protected virtual void OnUnRetweeted(StreamEventEventArgs e)
+		{
+			if (UnRetweeted != null)
+				UnRetweeted(this, e);
+		}
 		#endregion
 
 		#endregion
@@ -433,6 +499,19 @@ namespace Twitch.Streaming
 
 					case "favorite":
 						this.OnFavorited(
+							new StreamEventEventArgs
+							{
+								Target = new Entity.User(json["target"].ToString()),
+								Source = new Entity.User(json["source"].ToString()),
+								Event = json["event"],
+								TargetObject = new Status(json["target_object"].ToString()),
+								CreatedAt = json["created_at"],
+							}
+						);
+						break;
+
+					case "favorited_retweet":
+						this.OnFavoritedRetweet(
 							new StreamEventEventArgs
 							{
 								Target = new Entity.User(json["target"].ToString()),
