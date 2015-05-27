@@ -20,6 +20,16 @@ namespace Twitch.Utility
 			return new Analyzer(source).Parse();
 		}
 
+		public static List<object> GetArray(object obj)
+		{
+			return (List<object>)obj;
+		}
+
+		public static Dictionary<string, object> GetAssociativeArray(object obj)
+		{
+			return (Dictionary<string, object>)obj;
+		}
+
 		private class Analyzer
 		{
 			private int Cursor
