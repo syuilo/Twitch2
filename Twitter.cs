@@ -194,8 +194,8 @@ namespace Twitch
 		/// 認証されたユーザーでTwitter APIへリクエストを送信し、非同期でレスポンスを取得します。
 		/// </summary>
 		/// <param name="method">リクエスト メソッド</param>
-		/// <param name="url">APIのURL。</param>
-		/// <param name="parameter">リクエストのパラメーター。</param>
+		/// <param name="url">APIのURL</param>
+		/// <param name="parameter">リクエストのパラメーター</param>
 		/// <returns>APIから返された値(レスポンス)</returns>
 		public async Task<string> Request(
 			API.Method method, System.Uri url, Dictionary<string, string> parameter = null, string proxy = null)
@@ -208,8 +208,8 @@ namespace Twitch
 		/// 認証されたユーザーでTwitter APIへリクエストを送信し、非同期でレスポンスを取得します。
 		/// </summary>
 		/// <param name="method">リクエスト メソッド</param>
-		/// <param name="url">APIのURL。</param>
-		/// <param name="parameter">リクエストのパラメーター。</param>
+		/// <param name="url">APIのURL</param>
+		/// <param name="parameter">リクエストのパラメーター</param>
 		/// <returns>APIから返された値(レスポンス)</returns>
 		public async Task<string> Request(
 			API.Method method, string url, Dictionary<string, string> parameter = null, string proxy = null)
