@@ -328,7 +328,7 @@ namespace Twitch.Entity.Response.Users
 		/// <summary>
 		/// ユーザーID(Int64)を取得します。
 		/// </summary>
-		public Int64? ID
+		public Int64 ID
 		{
 			get;
 			private set;
