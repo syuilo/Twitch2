@@ -10,7 +10,6 @@ namespace Twitch
 {
 	public partial class Twitter
 	{
-		[Obsolete("オーバーロードを使用してください。")]
 		/// <summary>
 		/// 指定したユーザーをフォローします。
 		/// </summary>
@@ -18,6 +17,7 @@ namespace Twitch
 		/// <param name="id">フォローするユーザーのID</param>
 		/// <param name="follow">ユーザーからの通知を受け取るかどうかを示す System.Boolean 値。</param>
 		/// <returns>フォローされたユーザー</returns>
+		[Obsolete("オーバーロードを使用してください。")]
 		public async Task<User> FriendshipsCreate(
 			string screen_name = null,
 			Int64? id = null,
@@ -86,14 +86,14 @@ namespace Twitch
 		{
 			return await this.FriendshipsCreate(user.ID, follow);
 		}
-
-		[Obsolete("オーバーロードを使用してください。")]
+		
 		/// <summary>
 		/// 指定したユーザーのフォローを解除します。
 		/// </summary>
 		/// <param name="screen_name">フォローを解除するユーザーのScreenName</param>
 		/// <param name="id">フォローを解除するユーザーのID</param>
 		/// <returns>フォローを解除されたユーザー</returns>
+		[Obsolete("オーバーロードを使用してください。")]
 		public async Task<User> FriendshipsDestory(
 			string screen_name = null,
 			Int64? id = null)
@@ -138,6 +138,16 @@ namespace Twitch
 				await this.Request(
 					API.Method.POST,
 					new Uri(API.Urls.Friendships_Destroy), query));
+		}
+
+		/// <summary>
+		/// 指定したユーザーのフォローを解除します。
+		/// </summary>
+		/// <param name="user">フォローを解除するユーザー</param>
+		/// <returns>フォローを解除されたユーザー</returns>
+		public async Task<User> FriendshipsDestory(User user)
+		{
+			return await this.FriendshipsDestory(user.ID);
 		}
 	}
 }
