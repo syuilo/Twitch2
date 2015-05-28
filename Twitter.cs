@@ -163,6 +163,9 @@ namespace Twitch
 
 		#endregion
 
+		/// <summary>
+		/// このTwitterオブジェクトの内容を表す文字列を取得します。
+		/// </summary>
 		public override string ToString()
 		{
 			if (this.IsAuthorized)
