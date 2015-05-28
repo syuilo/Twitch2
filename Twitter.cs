@@ -77,7 +77,7 @@ namespace Twitch
 			}
 			private set
 			{
-			
+
 			}
 		}
 
@@ -166,9 +166,28 @@ namespace Twitch
 		public override string ToString()
 		{
 			if (this.IsAuthorized)
-				return this.ConsumerKey + ':' + this.ConsumerSecret + '/' + this.AccessToken + ':' + this.AccessTokenSecret;
+			{
+				return
+					"{{" +
+					"CK: " + this.ConsumerKey + " / " +
+					"CS: " + this.ConsumerSecret +
+					"}{" + 
+					"AT: " + this.AccessToken + " / " +
+					"ATS: " + this.AccessTokenSecret +
+					"}}" +
+					' ' +
+					'@' + this.ScreenName +
+					' ' +
+					'#' + this.UserID.ToString();
+			}
 			else
-				return this.ConsumerKey + ':' + this.ConsumerSecret;
+			{
+				return
+					"{" +
+					"CK: " + this.ConsumerKey + " / " +
+					"CS: " + this.ConsumerSecret +
+					"}";
+			}
 		}
 
 		/// <summary>
@@ -206,7 +225,7 @@ namespace Twitch
 		{
 			await this.Auth.GetRequestToken();
 			this.Auth.ShowAuthorizeBrowser();
-			
+
 			// C#においてメソッドチェーンは可読性の低下およびthisを返すことによる意図を把握出来ない場合に伴う保守性の低下を引き起こすためよろしくないらしいけど、ここだけはどうしてもメソッドチェーン出来るようにさせたかったのでthisを返しています。
 			return this;
 		}
