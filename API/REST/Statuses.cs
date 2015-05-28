@@ -176,8 +176,7 @@ namespace Twitch
 		/// </summary>
 		/// <param name="id">リツイートするツイートのID。</param>
 		/// <returns>ツイート オブジェクト</returns>
-		public async Task<Status> StatusesRetweet(
-			Int64 id)
+		public async Task<Status> StatusesRetweet(Int64 id)
 		{
 			var query = new Dictionary<string, string>();
 			query["id"] = id.ToString();
@@ -187,12 +186,21 @@ namespace Twitch
 		}
 
 		/// <summary>
+		/// 対象のツイートをリツイートします。
+		/// </summary>
+		/// <param name="status">リツイートするツイート</param>
+		/// <returns>リツイートしたツイート</returns>
+		public async Task<Status> StatusesRetweet(Status status)
+		{
+			return await this.StatusesRetweet(status.ID);
+		}
+
+		/// <summary>
 		/// ツイートを取得します。
 		/// </summary>
 		/// <param name="id">取得するツイートのID。</param>
 		/// <returns>ツイート オブジェクト</returns>
-		public async Task<Status> StatusesShow(
-			Int64 id)
+		public async Task<Status> StatusesShow(Int64 id)
 		{
 			var query = new Dictionary<string, string>();
 			query["id"] = id.ToString();
