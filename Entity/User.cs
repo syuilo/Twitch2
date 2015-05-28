@@ -37,10 +37,6 @@ namespace Twitch.Entity
 			{
 				return '@' + this.ScreenName;
 			}
-			private set
-			{
-				this.DisplayScreenName = value;
-			}
 		}
 
 		/// <summary>
