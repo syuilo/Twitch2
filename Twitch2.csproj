@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\ApiException.cs" />
-    <Compile Include="API\Method.cs" />
     <Compile Include="API\REST\Account.cs" />
     <Compile Include="API\REST\Blocks.cs" />
     <Compile Include="API\REST\DirectMessages.cs" />
@@ -55,17 +54,29 @@
     <Compile Include="API\REST\Lists.cs" />
     <Compile Include="API\REST\Mutes.cs" />
     <Compile Include="API\REST\OAuth.cs" />
+    <Compile Include="API\REST\Rest.cs" />
     <Compile Include="API\REST\Statuses.cs" />
     <Compile Include="API\REST\Users.cs" />
-    <Compile Include="API\Streaming\EventArgses\DisconnectedEventArgs.cs" />
-    <Compile Include="API\Streaming\EventArgses\FriendsListsEventArgs.cs" />
-    <Compile Include="API\Streaming\EventArgses\StatusDeletionEventArgs.cs" />
-    <Compile Include="API\Streaming\EventArgses\StatusUpdatedEventArgs.cs" />
-    <Compile Include="API\Streaming\EventArgses\StreamEventArgs.cs" />
-    <Compile Include="API\Streaming\EventArgses\StreamEventEventArgs.cs" />
-    <Compile Include="API\Streaming\Statuses\Filter.cs" />
-    <Compile Include="API\Streaming\StreamingBase.cs" />
-    <Compile Include="API\Streaming\User\UserStream.cs" />
+    <Compile Include="API\Method.cs" />
+    <Compile Include="TwitterObject\API\REST\Account.cs" />
+    <Compile Include="TwitterObject\API\REST\Blocks.cs" />
+    <Compile Include="TwitterObject\API\REST\DirectMessages.cs" />
+    <Compile Include="TwitterObject\API\REST\Favorites.cs" />
+    <Compile Include="TwitterObject\API\REST\Friendships.cs" />
+    <Compile Include="TwitterObject\API\REST\Lists.cs" />
+    <Compile Include="TwitterObject\API\REST\Mutes.cs" />
+    <Compile Include="TwitterObject\API\REST\OAuth.cs" />
+    <Compile Include="TwitterObject\API\REST\Statuses.cs" />
+    <Compile Include="TwitterObject\API\REST\Users.cs" />
+    <Compile Include="TwitterObject\API\Streaming\EventArgses\DisconnectedEventArgs.cs" />
+    <Compile Include="TwitterObject\API\Streaming\EventArgses\FriendsListsEventArgs.cs" />
+    <Compile Include="TwitterObject\API\Streaming\EventArgses\StatusDeletionEventArgs.cs" />
+    <Compile Include="TwitterObject\API\Streaming\EventArgses\StatusUpdatedEventArgs.cs" />
+    <Compile Include="TwitterObject\API\Streaming\EventArgses\StreamEventArgs.cs" />
+    <Compile Include="TwitterObject\API\Streaming\EventArgses\StreamEventEventArgs.cs" />
+    <Compile Include="TwitterObject\API\Streaming\Statuses\Filter.cs" />
+    <Compile Include="TwitterObject\API\Streaming\StreamingBase.cs" />
+    <Compile Include="TwitterObject\API\Streaming\User\UserStream.cs" />
     <Compile Include="API\Urls.cs" />
     <Compile Include="Authorizer.cs" />
     <Compile Include="Entity\Response\List.cs" />
