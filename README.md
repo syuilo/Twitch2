@@ -117,6 +117,7 @@ tw.Request(API.Method.POST, "https://api.twitter.com/hoge/huga.json", query);
 ### 利点
 - 名前をより直観的なものに出来る
 - 本来StatusesUpdateAPI自体に画像投稿機能はないため現在のTwitterオブジェクトのStatusesUpdateメソッドに画像投稿機能を実装することは出来ない(実際のAPIの仕様と違いが生じて気持ち悪い)が、たとえばTweetという抽象化したメソッドにすることで、そのメソッドに画像投稿機能を付加しても何の問題もない
+
 ### 例
 現在:
 ```
