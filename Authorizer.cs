@@ -68,8 +68,6 @@ namespace Twitch
 		{
 			var tw = new Twitter(this.ConsumerKey, this.ConsumerSecret);
 
-			//try
-			//{
 			string res = await tw.OauthRequestToken();
 
 			if (!string.IsNullOrEmpty(res))
@@ -80,12 +78,9 @@ namespace Twitch
 				return true;
 			}
 			else
+			{
 				return false;
-			//}
-			//catch
-			//{
-			//    return false;
-			//}
+			}
 		}
 
 		/// <summary>
@@ -130,7 +125,9 @@ namespace Twitch
 				return new Twitter(this.ConsumerKey, this.ConsumerSecret, access_token, access_token_secret);
 			}
 			else
+			{
 				return null;
+			}
 		}
 
 		/// <summary>
@@ -154,7 +151,9 @@ namespace Twitch
 				return new Twitter(this.ConsumerKey, this.ConsumerSecret, access_token, access_token_secret, screenName, id);
 			}
 			else
+			{
 				return null;
+			}
 		}
 	}
 }
