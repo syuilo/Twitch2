@@ -67,29 +67,8 @@ namespace Twitch
 				throw new ArgumentException("since_id と max_id を同時に指定することはできません。");
 			}
 
-			var query = new Dictionary<string, string>();
-			if (user_id != string.Empty)
-				query["user_id"] = user_id;
-			else if (screen_name != string.Empty)
-				query["screen_name"] = screen_name;
-			query["count"] = count.ToString();
-			query["since_id"] = since_id.ToString();
-			query["max_id"] = max_id.ToString();
-			query["trim_user"] = trim_user.ToString();
-			query["exclude_replies"] = exclude_replies.ToString();
-			query["contributor_details"] = contributor_details.ToString();
-			query["include_rts"] = include_rts.ToString();
-
-			string source = await this.Request(API.Method.GET, new Uri(API.Urls.Statuses_UserTimeline), query);
-
-			dynamic json = Utility.DynamicJson.Parse(source);
-
-			var statuses = new List<Status>();
-			foreach (dynamic status in json)
-			{
-				statuses.Add(new Status(status.ToString()));
-			}
-			return statuses;
+			return await
+				API.Rest.StatusesUserTimeline(this, user_id, screen_name, count, since_id, max_id, trim_user, exclude_replies, contributor_details, include_rts);
 		}
 
 
@@ -116,24 +95,7 @@ namespace Twitch
 				throw new ArgumentException("since_id と max_id を同時に指定することはできません。");
 			}
 
-			var query = new Dictionary<string, string>();
-			query["count"] = count.ToString();
-			query["since_id"] = since_id.ToString();
-			query["max_id"] = max_id.ToString();
-			query["trim_user"] = trim_user.ToString();
-			query["contributor_details"] = contributor_details.ToString();
-			query["include_entities"] = include_entities.ToString();
-
-			string source = await this.Request(API.Method.GET, new Uri(API.Urls.Statuses_MentionsTimeline), query);
-
-			dynamic json = Utility.DynamicJson.Parse(source);
-
-			var statuses = new List<Status>();
-			foreach (dynamic status in json)
-			{
-				statuses.Add(new Status(status.ToString()));
-			}
-			return statuses;
+			return await API.Rest.StatusesMentionsTimeline(this, count, since_id, max_id, trim_user, contributor_details, include_entities);
 		}
 
 		/// <summary>
