@@ -1,57 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Threading.Tasks;
 
 namespace Twitch.API
 {
 	public partial class Rest
 	{
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public async Task<string> OauthAuthorize()
+		public async Task<string> OauthAuthorize(Twitter twitter)
 		{
-			return await this.Request(API.Method.GET, new Uri(API.Urls.Oauth_Authorize));
+			return await
+				twitter.Request(API.Method.GET, new Uri(API.Urls.Oauth_Authorize));
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="oauthVerifier"></param>
-		/// <returns></returns>
-		public async Task<string> OauthAccessToken(string oauthVerifier)
+		public async Task<string> OauthAccessToken(
+			Twitter twitter, string oauthVerifier)
 		{
 			var query = new Dictionary<string, string>();
 			query["oauth_verifier"] = oauthVerifier;
 
-			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
+			return await
+				twitter.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="xAuthUsername"></param>
-		/// <param name="xAuthPassword"></param>
-		/// <returns></returns>
-		public async Task<string> OauthAccessToken(string xAuthUsername, string xAuthPassword)
+		public async Task<string> OauthAccessToken(
+			Twitter twitter,
+			string xAuthUsername,
+			string xAuthPassword)
 		{
 			var query = new Dictionary<string, string>();
 			query["x_auth_username"] = xAuthUsername;
 			query["x_auth_password"] = xAuthPassword;
 			query["x_auth_mode"] = "client_auth";
 
-			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
+			return await
+				twitter.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
 		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public async Task<string> OauthRequestToken()
+		public async Task<string> OauthRequestToken(Twitter twitter)
 		{
-			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_RequestToken));
+			return await
+				twitter.Request(API.Method.POST, new Uri(API.Urls.Oauth_RequestToken));
 		}
 	}
 }
