@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\ApiException.cs" />
+    <Compile Include="API\AuthenticationRequiredAttribute.cs" />
     <Compile Include="API\REST\Account.cs" />
     <Compile Include="API\REST\Blocks.cs" />
     <Compile Include="API\REST\DirectMessages.cs" />
