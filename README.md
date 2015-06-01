@@ -147,7 +147,7 @@ Twitch.Twitter.APIs.REST.Statuses.Update(tw, "櫻子可愛いですわ");
 ```
 Twitch2:
 ```
-tw.StatusesUpdate("櫻子可愛いですわ");
+tw.Tweet("櫻子可愛いですわ");
 ```
 
 - 認証もより簡潔になりました。Twitterオブジェクト自体が認証メソッドを持つようになり、Authorizeクラスのインスタンスを認証プロセスの間保持しておく必要がなくなりました。
