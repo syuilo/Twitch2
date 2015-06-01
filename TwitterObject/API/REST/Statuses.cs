@@ -51,7 +51,7 @@ namespace Twitch
 		/// <param name="contributor_details"></param>
 		/// <param name="include_rts"></param>
 		/// <returns>ツイートのリスト</returns>
-		public async Task<List<Status>> StatusesUserTimeline(
+		public async Task<List<Status>> GetUserTimeline(
 			string user_id = null,
 			string screen_name = null,
 			double count = 0,
@@ -103,7 +103,7 @@ namespace Twitch
 		/// <param name="contributor_details"></param>
 		/// <param name="include_entities"></param>
 		/// <returns>ツイートのリスト</returns>
-		public async Task<List<Status>> StatusesMentionsTimeline(
+		public async Task<List<Status>> GetMentions(
 			double count = 0,
 			Int64? since_id = null,
 			Int64? max_id = null,
@@ -139,34 +139,47 @@ namespace Twitch
 		/// <summary>
 		/// 新しいツイートを投稿します。
 		/// </summary>
-		/// <param name="status">本文。</param>
-		/// <param name="in_reply_to_status_id">返信元になるツイートのID。</param>
-		/// <param name="media"></param>
-		/// <returns>ツイート オブジェクト</returns>
-		public async Task<Status> StatusesUpdate(
-			string status,
-			Int64? in_reply_to_status_id = null)
+		/// <param name="text">本文</param>
+		/// <returns>投稿したツイート</returns>
+		public async Task<Status> Tweet(string text)
 		{
-			var query = new Dictionary<string, string>();
-			query["status"] = status;
-			query["in_reply_to_status_id"] = in_reply_to_status_id.ToString();
+			return await API.Rest.StatusesUpdate(this, text);
+		}
 
-			return new Status(
-				await this.Request(API.Method.POST, new Uri(API.Urls.Statuses_Update), query));
+		/// <summary>
+		/// 新しいツイートを投稿します。
+		/// </summary>
+		/// <param name="text">本文</param>
+		/// <param name="replyID">返信元になるツイートのID</param>
+		/// <returns>投稿したツイート</returns>
+		public async Task<Status> Tweet(
+			string text,
+			Int64 replyID)
+		{
+			return await API.Rest.StatusesUpdate(this, text, replyID);
+		}
+
+		/// <summary>
+		/// 新しいツイートを投稿します。
+		/// </summary>
+		/// <param name="text">本文</param>
+		/// <param name="reply">返信元になるツイート</param>
+		/// <returns>投稿したツイート</returns>
+		public async Task<Status> Tweet(
+			string text,
+			Status reply)
+		{
+			return await API.Rest.StatusesUpdate(this, text, reply.ID);
 		}
 
 		/// <summary>
 		/// 対象のツイートをリツイートします。
 		/// </summary>
-		/// <param name="id">リツイートするツイートのID。</param>
-		/// <returns>ツイート オブジェクト</returns>
-		public async Task<Status> StatusesRetweet(Int64 id)
+		/// <param name="id">リツイートするツイートのID</param>
+		/// <returns>リツイートしたツイート</returns>
+		public async Task<Status> Retweet(Int64 id)
 		{
-			var query = new Dictionary<string, string>();
-			query["id"] = id.ToString();
-
-			return new Status(
-				await this.Request(API.Method.POST, new Uri(API.Urls.Statuses_Retweet + id + ".json"), query));
+			return await API.Rest.StatusesRetweet(this, id);
 		}
 
 		/// <summary>
@@ -174,9 +187,9 @@ namespace Twitch
 		/// </summary>
 		/// <param name="status">リツイートするツイート</param>
 		/// <returns>リツイートしたツイート</returns>
-		public async Task<Status> StatusesRetweet(Status status)
+		public async Task<Status> Retweet(Status status)
 		{
-			return await this.StatusesRetweet(status.ID);
+			return await this.Retweet(status.ID);
 		}
 
 		/// <summary>
@@ -184,7 +197,7 @@ namespace Twitch
 		/// </summary>
 		/// <param name="id">取得するツイートのID。</param>
 		/// <returns>ツイート オブジェクト</returns>
-		public async Task<Status> StatusesShow(Int64 id)
+		public async Task<Status> GetTweet(Int64 id)
 		{
 			var query = new Dictionary<string, string>();
 			query["id"] = id.ToString();
