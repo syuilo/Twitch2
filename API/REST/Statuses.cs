@@ -8,6 +8,7 @@ namespace Twitch.API
 {
 	public partial class Rest
 	{
+		[AuthenticationRequired]
 		public static async Task<List<Status>> StatusesHomeTimeline(
 			Twitter twitter,
 			double count = 0,
@@ -44,6 +45,7 @@ namespace Twitch.API
 			return statuses;
 		}
 
+		[AuthenticationRequired]
 		public static async Task<List<Status>> StatusesUserTimeline(
 			Twitter twitter,
 			string user_id = null,
@@ -86,6 +88,7 @@ namespace Twitch.API
 			return statuses;
 		}
 
+		[AuthenticationRequired]
 		public static async Task<List<Status>> StatusesMentionsTimeline(
 			Twitter twitter,
 			double count = 0,
@@ -120,6 +123,7 @@ namespace Twitch.API
 			return statuses;
 		}
 
+		[AuthenticationRequired]
 		public static async Task<Status> StatusesUpdate(
 			Twitter twitter,
 			string status,

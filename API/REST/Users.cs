@@ -8,6 +8,7 @@ namespace Twitch.API
 {
 	public partial class Rest
 	{
+		[AuthenticationRequired]
 		public static async Task<User> UsersShow(
 			Twitter twitter,
 			Int64? user_id = null,
@@ -23,6 +24,7 @@ namespace Twitch.API
 					new Uri(API.Urls.Users_Show), query));
 		}
 
+		[AuthenticationRequired]
 		public static async Task<User> UsersReportSpam(
 			Twitter twitter,
 			Int64? user_id = null,

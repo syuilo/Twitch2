@@ -8,6 +8,7 @@ namespace Twitch.API
 {
 	public partial class Rest
 	{
+		[AuthenticationRequired]
 		public static async Task<User> BlocksCreate(
 			Twitter twitter,
 			string screen_name = null,
@@ -23,6 +24,7 @@ namespace Twitch.API
 					new Uri(API.Urls.Blocks_Create), query));
 		}
 
+		[AuthenticationRequired]
 		public static async Task<User> BlocksDestroy(
 			Twitter twitter, 
 			string screen_name = null,

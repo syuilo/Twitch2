@@ -8,6 +8,7 @@ namespace Twitch.API
 {
 	public partial class Rest
 	{
+		[AuthenticationRequired]
 		public static async Task<Status> FavoritesCreate(
 			Twitter twitter,
 			Int64 id)
@@ -19,6 +20,7 @@ namespace Twitch.API
 			return res != null ? new Status(res) : null;
 		}
 
+		[AuthenticationRequired]
 		public static async Task<Status> FavoritesDestroy(
 			Twitter twitter, 
 			Int64 id)

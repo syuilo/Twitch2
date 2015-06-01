@@ -10,6 +10,7 @@ namespace Twitch.API
 {
 	public partial class Rest
 	{
+		[AuthenticationRequired]
 		public static async Task<User> FriendshipsCreate(
 			Twitter twitter,
 			string screen_name = null,
@@ -27,6 +28,7 @@ namespace Twitch.API
 					new Uri(API.Urls.Friendships_Create), query));
 		}
 
+		[AuthenticationRequired]
 		public static async Task<User> FriendshipsDestory(
 			Twitter twitter,
 			string screen_name = null,

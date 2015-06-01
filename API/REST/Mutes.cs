@@ -4,16 +4,11 @@ using System.Collections.Specialized;
 using System.Threading.Tasks;
 using Twitch.Entity;
 
-namespace Twitch
+namespace Twitch.API
 {
-	public partial class Twitter
+	public partial class Rest
 	{
-		/// <summary>
-		/// 指定されたユーザーをミュートします。
-		/// </summary>
-		/// <param name="screen_name">ミュートするユーザーのScreenName。</param>
-		/// <param name="id">ミュートするユーザーのID。</param>
-		/// <returns>ミュートされたユーザー</returns>
+		[AuthenticationRequired]
 		public async Task<User> MutesUsersCreate(
 			string screen_name = null, Int64? id = null)
 		{
@@ -27,12 +22,7 @@ namespace Twitch
 					new Uri(API.Urls.Mutes_Users_Create), query));
 		}
 
-		/// <summary>
-		/// 指定したユーザーのミュートを解除します。
-		/// </summary>
-		/// <param name="screen_name">ミュートを解除するユーザーのScreenName。</param>
-		/// <param name="id">ミュートを解除するユーザーのID。</param>
-		/// <returns>ミュートを解除されたユーザー</returns>
+		[AuthenticationRequired]
 		public async Task<User> MutesUsersDestroy(
 			string screen_name = null, Int64? id = null)
 		{

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
 
-namespace Twitch
+namespace Twitch.API
 {
-	public partial class Twitter
+	public partial class Rest
 	{
 		/// <summary>
 		/// 

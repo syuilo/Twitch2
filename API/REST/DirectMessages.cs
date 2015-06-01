@@ -7,6 +7,7 @@ namespace Twitch.API
 {
 	public partial class Rest
 	{
+		[AuthenticationRequired]
 		public static async Task<string> DirectMessagesNew(
 			Twitter twitter,
 			string text, string screen_name = null,

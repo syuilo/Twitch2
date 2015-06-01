@@ -8,6 +8,7 @@ namespace Twitch.API
 {
 	public partial class Rest
 	{
+		[AuthenticationRequired]
 		public static async Task<User> UpdateProfile(
 			Twitter twitter,
 			string name = null,
@@ -24,6 +25,7 @@ namespace Twitch.API
 			return new User(await twitter.Request(API.Method.POST, new Uri(API.Urls.Account_UpdateProfile), query));
 		}
 
+		[AuthenticationRequired]
 		public static async Task<User> UpdateProfileImage(
 			Twitter twitter,
 			string image)
