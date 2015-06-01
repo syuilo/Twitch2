@@ -16,7 +16,7 @@ namespace Twitch
 		public async Task<User> GetUser(Int64 userID)
 		{
 			return await
-				API.Rest.UsersShow(user_id: userID);
+				API.Rest.UsersShow(this, user_id: userID);
 		}
 
 		/// <summary>
@@ -27,7 +27,7 @@ namespace Twitch
 		public async Task<User> GetUser(string screenName)
 		{
 			return await
-				API.Rest.UsersShow(screen_name: screenName);
+				API.Rest.UsersShow(this, screen_name: screenName);
 		}
 
 		/// <summary>
@@ -38,7 +38,7 @@ namespace Twitch
 		public async Task<User> UsersReportSpam(Int64 userID)
 		{
 			return await
-				API.Rest.UsersReportSpam(user_id: userID);
+				API.Rest.UsersReportSpam(this, user_id: userID);
 		}
 
 		/// <summary>
@@ -49,7 +49,7 @@ namespace Twitch
 		public async Task<User> UsersReportSpam(string screenName)
 		{
 			return await
-				API.Rest.UsersReportSpam(screen_name: screenName);
+				API.Rest.UsersReportSpam(this, screen_name: screenName);
 		}
 	}
 }
