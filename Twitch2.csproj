@@ -59,6 +59,7 @@
     <Compile Include="API\REST\Statuses.cs" />
     <Compile Include="API\REST\Users.cs" />
     <Compile Include="API\Method.cs" />
+    <Compile Include="Entity\List.cs" />
     <Compile Include="Entity\Response\DirectMessage.cs" />
     <Compile Include="Entity\DirectMessage.cs" />
     <Compile Include="TwitterObject\API\Rest.cs" />

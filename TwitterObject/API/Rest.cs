@@ -259,7 +259,7 @@ namespace Twitch
 		/// <param name="description">リストの説明</param>
 		/// <param name="mode">リストの公開状態。 public または private のいずれかを指定します。nullまたは指定しなかった場合はpublic(公開)になります。</param>
 		/// <returns>作成されたリスト</returns>
-		public async Task<string> CreateList(
+		public async Task<List> CreateList(
 			string name, string description, ListMode? mode = null)
 		{
 			if (mode != null)
@@ -281,33 +281,100 @@ namespace Twitch
 		/// <summary>
 		/// リストを削除します。
 		/// </summary>
-		/// <param name="slug"></param>
-		/// <param name="ownerScreenName"></param>
-		/// <returns></returns>
-		public async Task<string> DeleteList(string slug, string ownerScreenName)
+		/// <param name="id">リストのID</param>
+		/// <returns>削除されたリスト</returns>
+		public async Task<List> DeleteList(Int64 id)
 		{
 			return await
-				API.Rest.ListsDestroy(this, slug, ownerScreenName);
+				API.Rest.ListsDestroy(this, list_id: id);
+		}
+
+		/// <summary>
+		/// リストを削除します。
+		/// </summary>
+		/// <param name="list">リスト</param>
+		/// <returns>削除されたリスト</returns>
+		public async Task<List> DeleteList(List list)
+		{
+			return await
+				API.Rest.ListsDestroy(this, list_id: list.ID);
+		}
+
+		/// <summary>
+		/// リストを削除します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerID">リスト作成者のID</param>
+		/// <returns>削除されたリスト</returns>
+		public async Task<List> DeleteList(string slug, Int64 ownerID)
+		{
+			return await
+				API.Rest.ListsDestroy(this, slug: slug, owner_id: ownerID);
+		}
+
+		/// <summary>
+		/// リストを削除します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerScreenName">リスト作成者のScreenName</param>
+		/// <returns>削除されたリスト</returns>
+		public async Task<List> DeleteList(string slug, string ownerScreenName)
+		{
+			return await
+				API.Rest.ListsDestroy(this, slug: slug, owner_screen_name: ownerScreenName);
 		}
 
 		#endregion
 
-		/// <summary>
-		/// リストにメンバーを追加します。
-		/// </summary>
-		/// <param name="slug"></param>
-		/// <param name="screen_name"></param>
-		/// <param name="owner_screen_name"></param>
-		/// <returns></returns>
-		public async Task<string> ListsMembersCreate(string slug, string screen_name, string owner_screen_name)
-		{
-			var query = new Dictionary<string, string>();
-			query["slug"] = slug;
-			query["screen_name"] = screen_name;
-			query["owner_screen_name"] = owner_screen_name;
+		#region ListMemberAdd
 
-			return await this.Request(API.Method.POST, new Uri(API.Urls.Lists_Members_Create), query);
+		/// <summary>
+		/// ユーザーをリストに追加します。
+		/// </summary>
+		/// <param name="id">リストのID</param>
+		/// <returns></returns>
+		public async Task<List> ListMemberAdd(Int64 id)
+		{
+			return await
+				API.Rest.ListsMembersCreate(this, list_id: id);
 		}
+
+		/// <summary>
+		/// ユーザーをリストに追加します。
+		/// </summary>
+		/// <param name="list">リスト</param>
+		/// <returns></returns>
+		public async Task<List> ListMemberAdd(List list)
+		{
+			return await
+				API.Rest.ListsMembersCreate(this, list_id: list.ID);
+		}
+
+		/// <summary>
+		/// ユーザーをリストに追加します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerID">リスト作成者のID</param>
+		/// <returns></returns>
+		public async Task<List> ListMemberAdd(string slug, Int64 ownerID)
+		{
+			return await
+				API.Rest.ListsMembersCreate(this, slug: slug, owner_id: ownerID);
+		}
+
+		/// <summary>
+		/// ユーザーをリストに追加します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerScreenName">リスト作成者のScreenName</param>
+		/// <returns></returns>
+		public async Task<List> ListMemberAdd(string slug, string ownerScreenName)
+		{
+			return await
+				API.Rest.ListsMembersCreate(this, slug: slug, owner_screen_name: ownerScreenName);
+		}
+
+		#endregion
 
 		/// <summary>
 		/// リストからメンバーを削除します。

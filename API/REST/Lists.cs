@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
+using Twitch.Entity;
 
 namespace Twitch.API
 {
 	public partial class Rest
 	{
 		[AuthenticationRequired]
-		public static async Task<string> ListsCreate(
+		public static async Task<List> ListsCreate(
 			Twitter twitter, string name, string description, string mode = null)
 		{
 			var query = new Dictionary<string, string>();
@@ -16,30 +17,35 @@ namespace Twitch.API
 			query["mode"] = mode;
 			query["description"] = description;
 
-			return await
-				twitter.Request(API.Method.POST, new Uri(API.Urls.Lists_Create), query);
+			return new List(
+				await twitter.Request(API.Method.POST, new Uri(API.Urls.Lists_Create), query));
 		}
 
 		[AuthenticationRequired]
-		public static async Task<string> ListsDestroy(
-			Twitter twitter, string slug, string owner_screen_name)
+		public static async Task<List> ListsDestroy(
+			Twitter twitter, Int64? list_id = null, string slug = null, Int64? owner_id = null, string owner_screen_name = null)
 		{
 			var query = new Dictionary<string, string>();
+			query["list_id"] = list_id.ToString();
 			query["slug"] = slug;
+			query["owner_id"] = owner_id.ToString();
 			query["owner_screen_name"] = owner_screen_name;
 
-			return await
-				twitter.Request(API.Method.POST, new Uri(API.Urls.Lists_Destroy), query);
+			return new List(
+				await twitter.Request(API.Method.POST, new Uri(API.Urls.Lists_Destroy), query));
 		}
 
 		[AuthenticationRequired]
 		public static async Task<string> ListsMembersCreate(
-			Twitter twitter, string slug, string screen_name, string owner_screen_name)
+			Twitter twitter, Int64? list_id = null, string slug = null, Int64? owner_id = null, string owner_screen_name = null, Int64? user_id = null, string screen_name = null)
 		{
 			var query = new Dictionary<string, string>();
+			query["list_id"] = list_id.ToString();
 			query["slug"] = slug;
-			query["screen_name"] = screen_name;
+			query["owner_id"] = owner_id.ToString();
 			query["owner_screen_name"] = owner_screen_name;
+			query["user_id"] = owner_id.ToString();
+			query["screen_name"] = owner_screen_name;
 
 			return await
 				twitter.Request(API.Method.POST, new Uri(API.Urls.Lists_Members_Create), query);
@@ -47,12 +53,15 @@ namespace Twitch.API
 
 		[AuthenticationRequired]
 		public static async Task<string> ListsMembersDestroy(
-			Twitter twitter, string slug, string screen_name, string owner_screen_name)
+			Twitter twitter, Int64? list_id = null, string slug = null, Int64? owner_id = null, string owner_screen_name = null, Int64? user_id = null, string screen_name = null)
 		{
 			var query = new Dictionary<string, string>();
+			query["list_id"] = list_id.ToString();
 			query["slug"] = slug;
-			query["screen_name"] = screen_name;
+			query["owner_id"] = owner_id.ToString();
 			query["owner_screen_name"] = owner_screen_name;
+			query["user_id"] = owner_id.ToString();
+			query["screen_name"] = owner_screen_name;
 
 			return await
 				twitter.Request(API.Method.POST, new Uri(API.Urls.Lists_Members_Destroy), query);
