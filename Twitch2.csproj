@@ -65,7 +65,6 @@
     <Compile Include="TwitterObject\API\Rest.cs" />
     <Compile Include="TwitterObject\API\REST\Mutes.cs" />
     <Compile Include="TwitterObject\API\REST\OAuth.cs" />
-    <Compile Include="TwitterObject\API\REST\User.cs" />
     <Compile Include="API\Streaming\EventArgses\DisconnectedEventArgs.cs" />
     <Compile Include="API\Streaming\EventArgses\FriendsListsEventArgs.cs" />
     <Compile Include="API\Streaming\EventArgses\StatusDeletionEventArgs.cs" />
