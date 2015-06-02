@@ -161,6 +161,50 @@ namespace Twitch
 
 		#endregion
 
+		public static bool operator ==(Twitter a, Twitter b)
+		{
+			if (a.IsAuthorized && b.IsAuthorized)
+			{
+				return
+						a.ConsumerKey == b.ConsumerKey &&
+						a.ConsumerSecret == b.ConsumerSecret &&
+						a.AccessToken == b.AccessToken &&
+						a.AccessTokenSecret == b.AccessTokenSecret;
+			}
+			else if (!a.IsAuthorized && !b.IsAuthorized)
+			{
+				return
+					a.ConsumerKey == b.ConsumerKey &&
+					a.ConsumerSecret == b.ConsumerSecret;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public static bool operator !=(Twitter a, Twitter b)
+		{
+			if (a.IsAuthorized && b.IsAuthorized)
+			{
+				return
+						!(a.ConsumerKey == b.ConsumerKey &&
+						a.ConsumerSecret == b.ConsumerSecret &&
+						a.AccessToken == b.AccessToken &&
+						a.AccessTokenSecret == b.AccessTokenSecret);
+			}
+			else if (!a.IsAuthorized && !b.IsAuthorized)
+			{
+				return
+					!(a.ConsumerKey == b.ConsumerKey &&
+					a.ConsumerSecret == b.ConsumerSecret);
+			}
+			else
+			{
+				return true;
+			}
+		}
+
 		/// <summary>
 		/// このTwitterオブジェクトの内容を表す文字列を取得します。
 		/// </summary>
@@ -172,7 +216,7 @@ namespace Twitch
 					"{{" +
 					"CK: " + this.ConsumerKey + " / " +
 					"CS: " + this.ConsumerSecret +
-					"}{" + 
+					"}{" +
 					"AT: " + this.AccessToken + " / " +
 					"ATS: " + this.AccessTokenSecret +
 					"}}" +
