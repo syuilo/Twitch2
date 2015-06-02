@@ -808,5 +808,125 @@ namespace Twitch
 
 		#endregion
 
+		#region Mute
+
+		/// <summary>
+		/// ユーザーをミュートします。
+		/// </summary>
+		/// <param name="id">ミュートするユーザーのID</param>
+		/// <returns>ミュートされたユーザー</returns>
+		public async Task<User> Mute(Int64 id)
+		{
+			return await
+				API.Rest.MutesUsersCreate(this, id: id);
+		}
+
+		/// <summary>
+		/// ユーザーをミュートします。
+		/// </summary>
+		/// <param name="screenName">ミュートを解除するユーザーのScreenName</param>
+		/// <returns>ミュートされたユーザー</returns>
+		public async Task<User> Mute(string screenName)
+		{
+			return await
+				API.Rest.MutesUsersCreate(this, screen_name: screenName);
+		}
+
+		/// <summary>
+		/// ユーザーをミュートします。
+		/// </summary>
+		/// <param name="user">ミュートを解除するユーザー</param>
+		/// <returns>ミュートされたユーザー</returns>
+		public async Task<User> Mute(User user)
+		{
+			return await
+				API.Rest.MutesUsersCreate(this, id: user.ID);
+		}
+
+		#endregion
+
+		#region UnMute
+
+		/// <summary>
+		/// ユーザーのミュートを解除します。
+		/// </summary>
+		/// <param name="id">ミュートを解除するユーザーのID</param>
+		/// <returns>ミュートを解除されたユーザー</returns>
+		public async Task<User> UnMute(Int64 id)
+		{
+			return await
+				API.Rest.MutesUsersDestroy(this, id: id);
+		}
+
+		/// <summary>
+		/// ユーザーのミュートを解除します。
+		/// </summary>
+		/// <param name="screenName">ミュートを解除するユーザーのScreenName</param>
+		/// <returns>ミュートを解除されたユーザー</returns>
+		public async Task<User> UnMute(string screenName)
+		{
+			return await
+				API.Rest.MutesUsersDestroy(this, screen_name: screenName);
+		}
+
+		/// <summary>
+		/// ユーザーのミュートを解除します。
+		/// </summary>
+		/// <param name="user">ミュートを解除するユーザー</param>
+		/// <returns>ミュートを解除されたユーザー</returns>
+		public async Task<User> UnMute(User user)
+		{
+			return await
+				API.Rest.MutesUsersDestroy(this, id: user.ID);
+		}
+
+		#endregion
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public async Task<string> OauthAuthorize()
+		{
+			return await this.Request(API.Method.GET, new Uri(API.Urls.Oauth_Authorize));
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="oauthVerifier"></param>
+		/// <returns></returns>
+		public async Task<string> OauthAccessToken(string oauthVerifier)
+		{
+			var query = new Dictionary<string, string>();
+			query["oauth_verifier"] = oauthVerifier;
+
+			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="xAuthUsername"></param>
+		/// <param name="xAuthPassword"></param>
+		/// <returns></returns>
+		public async Task<string> OauthAccessToken(string xAuthUsername, string xAuthPassword)
+		{
+			var query = new Dictionary<string, string>();
+			query["x_auth_username"] = xAuthUsername;
+			query["x_auth_password"] = xAuthPassword;
+			query["x_auth_mode"] = "client_auth";
+
+			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public async Task<string> OauthRequestToken()
+		{
+			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_RequestToken));
+		}
 	}
 }
