@@ -48,7 +48,7 @@ namespace Twitch.API
 		[AuthenticationRequired]
 		public static async Task<List<Status>> StatusesUserTimeline(
 			Twitter twitter,
-			string user_id = null,
+			Int64? user_id = null,
 			string screen_name = null,
 			double count = 0,
 			Int64? since_id = null,
@@ -64,10 +64,8 @@ namespace Twitch.API
 			}
 
 			var query = new Dictionary<string, string>();
-			if (user_id != string.Empty)
-				query["user_id"] = user_id;
-			else if (screen_name != string.Empty)
-				query["screen_name"] = screen_name;
+			query["user_id"] = user_id.ToString();
+			query["screen_name"] = screen_name;
 			query["count"] = count.ToString();
 			query["since_id"] = since_id.ToString();
 			query["max_id"] = max_id.ToString();
