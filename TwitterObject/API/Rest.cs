@@ -326,28 +326,26 @@ namespace Twitch
 
 		#endregion
 
-		#region ListMemberAdd
+		#region AddListMember
 
 		/// <summary>
 		/// ユーザーをリストに追加します。
 		/// </summary>
-		/// <param name="id">リストのID</param>
-		/// <returns></returns>
-		public async Task<List> ListMemberAdd(Int64 id)
+		/// <param name="listID">リストのID</param>
+		/// <param name="userID">リストに追加するユーザーのID</param>
+		public async void AddListMember(Int64 listID, Int64 userID)
 		{
-			return await
-				API.Rest.ListsMembersCreate(this, list_id: id);
+			API.Rest.ListsMembersCreate(this, list_id: listID, user_id: userID);
 		}
 
 		/// <summary>
 		/// ユーザーをリストに追加します。
 		/// </summary>
-		/// <param name="list">リスト</param>
-		/// <returns></returns>
-		public async Task<List> ListMemberAdd(List list)
+		/// <param name="listID">リストのID</param>
+		/// <param name="screenName">リストに追加するユーザーのScreenName</param>
+		public async void AddListMember(Int64 listID, string screenName)
 		{
-			return await
-				API.Rest.ListsMembersCreate(this, list_id: list.ID);
+			API.Rest.ListsMembersCreate(this, list_id: listID, screen_name: screenName);
 		}
 
 		/// <summary>
@@ -355,11 +353,21 @@ namespace Twitch
 		/// </summary>
 		/// <param name="slug">リストのスラグ</param>
 		/// <param name="ownerID">リスト作成者のID</param>
-		/// <returns></returns>
-		public async Task<List> ListMemberAdd(string slug, Int64 ownerID)
+		/// <param name="userID">リストに追加するユーザーのID</param>
+		public async void AddListMember(string slug, Int64 ownerID, Int64 userID)
 		{
-			return await
-				API.Rest.ListsMembersCreate(this, slug: slug, owner_id: ownerID);
+			API.Rest.ListsMembersCreate(this, slug: slug, owner_id: ownerID, user_id: userID);
+		}
+
+		/// <summary>
+		/// ユーザーをリストに追加します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerID">リスト作成者のID</param>
+		/// <param name="screenName">リストに追加するユーザーのScreenName</param>
+		public async void AddListMember(string slug, Int64 ownerID, string screenName)
+		{
+			API.Rest.ListsMembersCreate(this, slug: slug, owner_id: ownerID, screen_name: screenName);
 		}
 
 		/// <summary>
@@ -367,30 +375,92 @@ namespace Twitch
 		/// </summary>
 		/// <param name="slug">リストのスラグ</param>
 		/// <param name="ownerScreenName">リスト作成者のScreenName</param>
-		/// <returns></returns>
-		public async Task<List> ListMemberAdd(string slug, string ownerScreenName)
+		/// <param name="userID">リストに追加するユーザーのID</param>
+		public async void AddListMember(string slug, string ownerScreenName, Int64 userID)
 		{
-			return await
-				API.Rest.ListsMembersCreate(this, slug: slug, owner_screen_name: ownerScreenName);
+			API.Rest.ListsMembersCreate(this, slug: slug, owner_screen_name: ownerScreenName, user_id: userID);
+		}
+
+		/// <summary>
+		/// ユーザーをリストに追加します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerScreenName">リスト作成者のScreenName</param>
+		/// <param name="screenName">リストに追加するユーザーのScreenName</param>
+		public async void AddListMember(string slug, string ownerScreenName, string screenName)
+		{
+			API.Rest.ListsMembersCreate(this, slug: slug, owner_screen_name: ownerScreenName, screen_name: screenName);
 		}
 
 		#endregion
 
-		/// <summary>
-		/// リストからメンバーを削除します。
-		/// </summary>
-		/// <param name="slug"></param>
-		/// <param name="screen_name"></param>
-		/// <param name="owner_screen_name"></param>
-		/// <returns></returns>
-		public async Task<string> ListsMembersDestroy(string slug, string screen_name, string owner_screen_name)
-		{
-			var query = new Dictionary<string, string>();
-			query["slug"] = slug;
-			query["screen_name"] = screen_name;
-			query["owner_screen_name"] = owner_screen_name;
+		#region RemoveListMember
 
-			return await this.Request(API.Method.POST, new Uri(API.Urls.Lists_Members_Destroy), query);
+		/// <summary>
+		/// ユーザーをリストから削除します。
+		/// </summary>
+		/// <param name="listID">リストのID</param>
+		/// <param name="userID">リストから削除するユーザーのID</param>
+		public async void RemoveListMember(Int64 listID, Int64 userID)
+		{
+			API.Rest.ListsMembersDestroy(this, list_id: listID, user_id: userID);
 		}
+
+		/// <summary>
+		/// ユーザーをリストから削除します。
+		/// </summary>
+		/// <param name="listID">リストのID</param>
+		/// <param name="screenName">リストから削除するユーザーのScreenName</param>
+		public async void RemoveListMember(Int64 listID, string screenName)
+		{
+			API.Rest.ListsMembersDestroy(this, list_id: listID, screen_name: screenName);
+		}
+
+		/// <summary>
+		/// ユーザーをリストから削除します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerID">リスト作成者のID</param>
+		/// <param name="userID">リストから削除するユーザーのID</param>
+		public async void RemoveListMember(string slug, Int64 ownerID, Int64 userID)
+		{
+			API.Rest.ListsMembersDestroy(this, slug: slug, owner_id: ownerID, user_id: userID);
+		}
+
+		/// <summary>
+		/// ユーザーをリストから削除します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerID">リスト作成者のID</param>
+		/// <param name="screenName">リストから削除するユーザーのScreenName</param>
+		public async void RemoveListMember(string slug, Int64 ownerID, string screenName)
+		{
+			API.Rest.ListsMembersDestroy(this, slug: slug, owner_id: ownerID, screen_name: screenName);
+		}
+
+		/// <summary>
+		/// ユーザーをリストから削除します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerScreenName">リスト作成者のScreenName</param>
+		/// <param name="userID">リストから削除するユーザーのID</param>
+		public async void RemoveListMember(string slug, string ownerScreenName, Int64 userID)
+		{
+			API.Rest.ListsMembersDestroy(this, slug: slug, owner_screen_name: ownerScreenName, user_id: userID);
+		}
+
+		/// <summary>
+		/// ユーザーをリストから削除します。
+		/// </summary>
+		/// <param name="slug">リストのスラグ</param>
+		/// <param name="ownerScreenName">リスト作成者のScreenName</param>
+		/// <param name="screenName">リストから削除するユーザーのScreenName</param>
+		public async void RemoveListMember(string slug, string ownerScreenName, string screenName)
+		{
+			API.Rest.ListsMembersDestroy(this, slug: slug, owner_screen_name: ownerScreenName, screen_name: screenName);
+		}
+
+		#endregion
+
 	}
 }

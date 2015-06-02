@@ -36,7 +36,7 @@ namespace Twitch.API
 		}
 
 		[AuthenticationRequired]
-		public static async Task<string> ListsMembersCreate(
+		public static async void ListsMembersCreate(
 			Twitter twitter, Int64? list_id = null, string slug = null, Int64? owner_id = null, string owner_screen_name = null, Int64? user_id = null, string screen_name = null)
 		{
 			var query = new Dictionary<string, string>();
@@ -47,12 +47,12 @@ namespace Twitch.API
 			query["user_id"] = owner_id.ToString();
 			query["screen_name"] = owner_screen_name;
 
-			return await
+			await
 				twitter.Request(API.Method.POST, new Uri(API.Urls.Lists_Members_Create), query);
 		}
 
 		[AuthenticationRequired]
-		public static async Task<string> ListsMembersDestroy(
+		public static async void ListsMembersDestroy(
 			Twitter twitter, Int64? list_id = null, string slug = null, Int64? owner_id = null, string owner_screen_name = null, Int64? user_id = null, string screen_name = null)
 		{
 			var query = new Dictionary<string, string>();
@@ -63,7 +63,7 @@ namespace Twitch.API
 			query["user_id"] = owner_id.ToString();
 			query["screen_name"] = owner_screen_name;
 
-			return await
+			await
 				twitter.Request(API.Method.POST, new Uri(API.Urls.Lists_Members_Destroy), query);
 		}
 	}
