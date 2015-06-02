@@ -59,12 +59,9 @@
     <Compile Include="API\REST\Statuses.cs" />
     <Compile Include="API\REST\Users.cs" />
     <Compile Include="API\Method.cs" />
-    <Compile Include="TwitterObject\API\REST\Account.cs" />
-    <Compile Include="TwitterObject\API\REST\Blocks.cs" />
-    <Compile Include="TwitterObject\API\REST\DirectMessages.cs" />
-    <Compile Include="TwitterObject\API\REST\Favorites.cs" />
-    <Compile Include="TwitterObject\API\REST\Friendships.cs" />
-    <Compile Include="TwitterObject\API\REST\Lists.cs" />
+    <Compile Include="Entity\Response\DirectMessage.cs" />
+    <Compile Include="Entity\DirectMessage.cs" />
+    <Compile Include="TwitterObject\API\Rest.cs" />
     <Compile Include="TwitterObject\API\REST\Mutes.cs" />
     <Compile Include="TwitterObject\API\REST\OAuth.cs" />
     <Compile Include="TwitterObject\API\REST\Tweet.cs" />

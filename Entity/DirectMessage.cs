@@ -4,15 +4,15 @@ using System.Threading.Tasks;
 namespace Twitch.Entity
 {
 	/// <summary>
-	/// ツイートを格納するツイート オブジェクトです。
+	/// ダイレクトメッセージ
 	/// </summary>
 	[Serializable]
-	public class Status : Response.Tweets.Status
+	public class DirectMessage : Response.DirectMessage
 	{
-		public Status()
+		public DirectMessage()
 			: base() { }
 
-		public Status(string source)
+		public DirectMessage(string source)
 			: base(source) { }
 	}
 }

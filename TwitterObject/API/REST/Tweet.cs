@@ -167,5 +167,49 @@ namespace Twitch
 			return new Status(
 				await this.Request(API.Method.GET, new Uri(API.Urls.Statuses_Show), query));
 		}
+
+		/// <summary>
+		/// ツイートをお気に入りに登録します。
+		/// </summary>
+		/// <param name="id">対象のツイートのID</param>
+		/// <returns>対象のツイート</returns>
+		public async Task<Status> Favorite(Int64 id)
+		{
+			return await
+				API.Rest.FavoritesCreate(this, id);
+		}
+
+		/// <summary>
+		/// ツイートをお気に入りに登録します。
+		/// </summary>
+		/// <param name="status">対象のツイート</param>
+		/// <returns>対象のツイート</returns>
+		public async Task<Status> Favorite(Status status)
+		{
+			return await
+				API.Rest.FavoritesCreate(this, status.ID);
+		}
+
+		/// <summary>
+		/// ツイートをお気に入りから削除します。
+		/// </summary>
+		/// <param name="id">対象のツイートのID</param>
+		/// <returns>対象のツイート</returns>
+		public async Task<Status> UnFavorite(Int64 id)
+		{
+			return await
+				API.Rest.FavoritesDestroy(this, id);
+		}
+
+		/// <summary>
+		/// ツイートをお気に入りから削除します。
+		/// </summary>
+		/// <param name="status">対象のツイート</param>
+		/// <returns>対象のツイート</returns>
+		public async Task<Status> UnFavorite(Status status)
+		{
+			return await
+				API.Rest.FavoritesDestroy(this, status.ID);
+		}
 	}
 }

@@ -6,13 +6,13 @@ namespace Twitch.API
 {
 	public partial class Rest
 	{
-		public async Task<string> OauthAuthorize(Twitter twitter)
+		public static async Task<string> OauthAuthorize(Twitter twitter)
 		{
 			return await
 				twitter.Request(API.Method.GET, new Uri(API.Urls.Oauth_Authorize));
 		}
 
-		public async Task<string> OauthAccessToken(
+		public static async Task<string> OauthAccessToken(
 			Twitter twitter, string oauthVerifier)
 		{
 			var query = new Dictionary<string, string>();
@@ -22,7 +22,7 @@ namespace Twitch.API
 				twitter.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
 		}
 
-		public async Task<string> OauthAccessToken(
+		public static async Task<string> OauthAccessToken(
 			Twitter twitter,
 			string xAuthUsername,
 			string xAuthPassword)
@@ -36,7 +36,7 @@ namespace Twitch.API
 				twitter.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
 		}
 
-		public async Task<string> OauthRequestToken(Twitter twitter)
+		public static async Task<string> OauthRequestToken(Twitter twitter)
 		{
 			return await
 				twitter.Request(API.Method.POST, new Uri(API.Urls.Oauth_RequestToken));

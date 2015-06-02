@@ -113,7 +113,7 @@ namespace Twitch.Entity.Response.Tweets
 		}
 
 		/// <summary>
-		/// 
+		/// エンティティを取得します。
 		/// </summary>
 		public Entities.Entities Entities
 		{

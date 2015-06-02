@@ -38,45 +38,5 @@ namespace Twitch.Entity
 				return '@' + this.ScreenName;
 			}
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		public void GetHeader()
-		{
-
-		}
-
-
-		/// <summary>
-		/// フォローします。
-		/// </summary>
-		/// <returns>成功したかどうか</returns>
-		public async Task<bool> Follow(Twitter twitter)
-		{
-			return await twitter.FriendshipsCreate(id: this.ID) != null;
-		}
-
-		/// <summary>
-		/// フォローを解除します。
-		/// </summary>
-		/// <returns>成功したかどうか</returns>
-		public async Task<bool> Remove(Twitter twitter)
-		{
-			return await twitter.FriendshipsDestory(id: this.ID) != null;
-		}
-
-		/// <summary>
-		/// スパムとして報告します。
-		/// </summary>
-		/// <returns>成功したかどうか</returns>
-		public async Task<bool> SpamAndBlock(Twitter twitter)
-		{
-			return await twitter.UsersReportSpam(user_id: this.ID) != null;
-		}
-
-		// リストに追加します。
-		// 
-		// ブロックします。
 	}
 }
