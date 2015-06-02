@@ -278,28 +278,6 @@ namespace Twitch
 		/// </summary>
 		/// <param name="count">取得するツイートの数。200以下でなければなりません。</param>
 		/// <param name="since_id">指定したIDより大きなIDを持つ結果のみを返します(つまり、より新しい)。APIを介してアクセスできるツイートの数には制限があります。ツイートの制限がsince_id以来発生している場合は、since_idは、利用可能な最も古いIDに強制されます。</param>
-		/// <param name="trim_user">trueに設定すると、タイムライン上で返される各ツイートはステータスのみ作者数値IDを含むユーザーオブジェクトが含まれます。完全なユーザーオブジェクトを受け取るためには、このパラメータを省略します。</param>
-		/// <param name="exclude_replies">trueに設定すると、取得するタイムラインからリツイートやリプライは除外されます。</param>
-		/// <param name="contributor_details"></param>
-		/// <param name="include_entities"></param>
-		/// <returns>ツイートのリスト</returns>
-		public async Task<List<Status>> GetTimeline(
-			double count,
-			Int64 since_id,
-			bool trim_user = false,
-			bool exclude_replies = false,
-			bool contributor_details = false,
-			bool include_entities = true)
-		{
-			return await
-				API.Rest.StatusesHomeTimeline(
-					this, count, since_id, null, trim_user, exclude_replies, contributor_details, include_entities);
-		}
-
-		/// <summary>
-		/// ホーム タイムラインを取得します。
-		/// </summary>
-		/// <param name="count">取得するツイートの数。200以下でなければなりません。</param>
 		/// <param name="max_id">指定されたIDと同じか、それより古いIDを持つ結果のみを返します(つまり、より古い)。</param>
 		/// <param name="trim_user">trueに設定すると、タイムライン上で返される各ツイートはステータスのみ作者数値IDを含むユーザーオブジェクトが含まれます。完全なユーザーオブジェクトを受け取るためには、このパラメータを省略します。</param>
 		/// <param name="exclude_replies">trueに設定すると、取得するタイムラインからリツイートやリプライは除外されます。</param>
@@ -308,15 +286,21 @@ namespace Twitch
 		/// <returns>ツイートのリスト</returns>
 		public async Task<List<Status>> GetTimeline(
 			double count,
+			Int64 since_id,
 			Int64 max_id,
 			bool trim_user = false,
 			bool exclude_replies = false,
 			bool contributor_details = false,
 			bool include_entities = true)
 		{
+			if (since_id != null && max_id != null)
+			{
+				throw new ArgumentException("since_id と max_id を同時に指定することはできません。");
+			}
+
 			return await
 				API.Rest.StatusesHomeTimeline(
-					this, count, null, max_id, trim_user, exclude_replies, contributor_details, include_entities);
+					this, count, since_id, max_id, trim_user, exclude_replies, contributor_details, include_entities);
 		}
 
 		#endregion
@@ -882,51 +866,60 @@ namespace Twitch
 
 		#endregion
 
+		#region  OAuthAuthorize
+
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public async Task<string> OauthAuthorize()
+		public async Task<string> OAuthAuthorize()
 		{
-			return await this.Request(API.Method.GET, new Uri(API.Urls.Oauth_Authorize));
+			return await
+				API.Rest.OauthAuthorize(this);
 		}
 
+		#endregion
+
+		#region OAuthGetAccessToken
+
 		/// <summary>
-		/// 
+		/// OAuth認証におけるアクセス トークンを取得します。
 		/// </summary>
 		/// <param name="oauthVerifier"></param>
-		/// <returns></returns>
-		public async Task<string> OauthAccessToken(string oauthVerifier)
+		/// <returns>アクセス トークン</returns>
+		public async Task<string> OAuthGetAccessToken(string oauthVerifier)
 		{
-			var query = new Dictionary<string, string>();
-			query["oauth_verifier"] = oauthVerifier;
-
-			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
+			return await
+				API.Rest.OauthAccessToken(this, oauthVerifier);
 		}
 
 		/// <summary>
-		/// 
+		/// OAuth認証におけるアクセス トークンを取得します。
 		/// </summary>
-		/// <param name="xAuthUsername"></param>
-		/// <param name="xAuthPassword"></param>
-		/// <returns></returns>
-		public async Task<string> OauthAccessToken(string xAuthUsername, string xAuthPassword)
+		/// <param name="xAuthUsername">認証するユーザーのユーザー名</param>
+		/// <param name="xAuthPassword">認証するユーザーのパスワード</param>
+		/// <returns>アクセス トークン</returns>
+		public async Task<string> OAuthGetAccessToken(
+			string xAuthUsername, string xAuthPassword)
 		{
-			var query = new Dictionary<string, string>();
-			query["x_auth_username"] = xAuthUsername;
-			query["x_auth_password"] = xAuthPassword;
-			query["x_auth_mode"] = "client_auth";
-
-			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_AccessToken), query);
+			return await
+				API.Rest.OauthAccessToken(this, xAuthUsername, xAuthPassword);
 		}
+
+		#endregion
+
+		#region OAuthGetRequestToken
 
 		/// <summary>
-		/// 
+		/// OAuth認証におけるリクエスト トークンを取得します。
 		/// </summary>
-		/// <returns></returns>
-		public async Task<string> OauthRequestToken()
+		/// <returns>リクエスト トークン</returns>
+		public async Task<string> OAuthGetRequestToken()
 		{
-			return await this.Request(API.Method.POST, new Uri(API.Urls.Oauth_RequestToken));
+			return await
+				API.Rest.OauthRequestToken(this);
 		}
+
+		#endregion
 	}
 }

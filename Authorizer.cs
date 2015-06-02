@@ -68,7 +68,7 @@ namespace Twitch
 		{
 			var tw = new Twitter(this.ConsumerKey, this.ConsumerSecret);
 
-			string res = await tw.OauthRequestToken();
+			string res = await tw.OAuthGetRequestToken();
 
 			if (!string.IsNullOrEmpty(res))
 			{
@@ -115,7 +115,7 @@ namespace Twitch
 		public async Task<Twitter> GetAccessTokenFromXAuth(string screenName, string password)
 		{
 			var tw = new Twitter(this.ConsumerKey, this.ConsumerSecret);
-			string res = await tw.OauthAccessToken(screenName, password);
+			string res = await tw.OAuthGetAccessToken(screenName, password);
 
 			if (!string.IsNullOrEmpty(res))
 			{
@@ -138,7 +138,7 @@ namespace Twitch
 		public async Task<Twitter> GetAccessTokenFromPinCode(string PIN)
 		{
 			var tw = new Twitter(this.ConsumerKey, this.ConsumerSecret, this.OAuthToken, this.OAuthTokenSecret);
-			string res = await tw.OauthAccessToken(PIN);
+			string res = await tw.OAuthGetAccessToken(PIN);
 			Console.WriteLine(res);
 
 			if (!string.IsNullOrEmpty(res))
