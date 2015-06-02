@@ -32,7 +32,7 @@ tw = await tw.AuthorizePin("got pin code");
 ここまでたった3文です。
 実際になにかつぶやいてみましょう:
 ```CSharp
-tw.StatusesUpdate("Hello, Twitch!");
+tw.Tweet("Hello, Twitch!");
 ```
 さあどうでしょうか。タイムラインを確認してみてください。
 **無事にツイートが投稿されていれば成功です。**
@@ -110,31 +110,6 @@ query["hrtn"] = "hmwr";
 query["oomr"] = "skrk";
 
 tw.Request(API.Method.POST, "https://api.twitter.com/hoge/huga.json", query);
-```
-
-# 今後の予定
-## APIを抽象化してTwitterAPIの仕様を利用者に隠蔽する
-### 利点
-- 名前をより直観的なものに出来る
-- 本来StatusesUpdateAPI自体に画像投稿機能はないため現在のTwitterオブジェクトのStatusesUpdateメソッドに画像投稿機能を実装することは出来ない(実際のAPIの仕様と違いが生じて気持ち悪い)が、たとえばTweetという抽象化したメソッドにすることで、そのメソッドに画像投稿機能を付加しても何の問題もない
-
-### 例
-現在:
-```
-tw.StatusesUpdate("櫻子可愛いですわ");
-tw.FavoritesCreate(status);
-tw.FavoritesDestroy(status);
-tw.FriendshipsCreate(user);
-tw.FriendshipsDestroy(user);
-```
-
-今後:
-```
-tw.Tweet("櫻子可愛いですわ");
-tw.Favorite(status);
-tw.UnFavorite(status);
-tw.Follow(user);
-tw.Remove(user);
 ```
 
 # 初代Twitchからの変更点(初代Twitchを使っていた人向けのセクション)
