@@ -161,6 +161,9 @@ namespace Twitch
 
 		#endregion
 
+		/// <summary>
+		/// 比較するTwitterオブジェクトに関連付けられているトークンセットが一致するかを検証します。
+		/// </summary>
 		public static bool operator ==(Twitter a, Twitter b)
 		{
 			if (a.IsAuthorized && b.IsAuthorized)
@@ -183,6 +186,9 @@ namespace Twitch
 			}
 		}
 
+		/// <summary>
+		/// 比較するTwitterオブジェクトに関連付けられているトークンセットが異なるものかを検証します。
+		/// </summary>
 		public static bool operator !=(Twitter a, Twitter b)
 		{
 			if (a.IsAuthorized && b.IsAuthorized)
