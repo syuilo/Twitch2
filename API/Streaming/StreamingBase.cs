@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+
 using Twitch.API;
 using Twitch.OAuth;
 
@@ -290,17 +291,24 @@ namespace Twitch.Streaming
 
 			if (this.Parameter != null)
 			{
+				foreach (var k in this.Parameter)
+				{
+					Console.WriteLine(k);
+				}
+
 				// Create request data
-				var para = from DictionaryEntry k in this.Parameter
+				var para = from KeyValuePair<string, string> k in this.Parameter
 						   select (k.Value != null)
 						   ? Core.UrlEncode((string)k.Key, Encoding.UTF8) + '=' + Core.UrlEncode((string)k.Value, Encoding.UTF8)
 						   : null;
 
 				reqdata = String.Join("&", para.ToArray());
 
-				if (Method == Method.GET)
+				if (this.Method == Method.GET)
+				{
 					// Join request data to url query
 					requrl += '?' + reqdata;
+				}
 			}
 
 			string auth = Core.GenerateRequestHeader(
@@ -314,10 +322,12 @@ namespace Twitch.Streaming
 			request.Headers["Authorization"] = auth;
 			request.Headers["Accept-Encoding"] = this.IsGZip ? "deflate, gzip" : null;
 
-			if (Method == Method.POST && this.Parameter != null)
+			if (this.Method == Method.POST && this.Parameter != null)
+			{
 				// Write request data
 				using (var streamWriter = new StreamWriter(await request.GetRequestStreamAsync()))
 					await streamWriter.WriteAsync(reqdata);
+			}
 
 		ConnectionStart:
 
