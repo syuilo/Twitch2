@@ -129,8 +129,9 @@ namespace Twitch
 			{
 				string access_token = Utility.AnalyzeUrlQuery.Analyze(res, "oauth_token");
 				string access_token_secret = Utility.AnalyzeUrlQuery.Analyze(res, "oauth_token_secret");
+				var id = Int64.Parse(Utility.AnalyzeUrlQuery.Analyze(res, "user_id"));
 
-				return new Twitter(this.ConsumerKey, this.ConsumerSecret, access_token, access_token_secret);
+				return new Twitter(this.ConsumerKey, this.ConsumerSecret, access_token, access_token_secret, screenName, id);
 			}
 			else
 			{
