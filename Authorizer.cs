@@ -72,6 +72,14 @@ namespace Twitch
 
 			if (!string.IsNullOrEmpty(res))
 			{
+				try
+				{
+					var json = Twitch.Utility.DynamicJson.Parse(res);
+					if (json.IsDefined("errors"))
+						return false;
+				}
+				catch { }
+
 				this.OAuthToken = Utility.AnalyzeUrlQuery.Analyze(res, "oauth_token");
 				this.OAuthTokenSecret = Utility.AnalyzeUrlQuery.Analyze(res, "oauth_token_secret");
 
