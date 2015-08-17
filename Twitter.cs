@@ -247,12 +247,18 @@ namespace Twitch
 		/// <param name="method">リクエスト メソッド</param>
 		/// <param name="url">APIのURL</param>
 		/// <param name="parameter">リクエストのパラメーター</param>
+		/// <param name="proxy">リクエストに利用するプロキシ</param>
+		/// <param name="userAgent">ユーザーの UserAgent</param>
 		/// <returns>APIから返された値(レスポンス)</returns>
 		public async Task<string> Request(
-			API.Method method, System.Uri url, Dictionary<string, string> parameter = null, string proxy = null)
+			API.Method method,
+			System.Uri url,
+			Dictionary<string, string> parameter = null,
+			string proxy = null,
+			string userAgent = null)
 		{
 			return await new TwitterRequest(
-				this, method, url, parameter, proxy).Request();
+				this, method, url, parameter, proxy, userAgent).Request();
 		}
 
 		/// <summary>
@@ -261,12 +267,18 @@ namespace Twitch
 		/// <param name="method">リクエスト メソッド</param>
 		/// <param name="url">APIのURL</param>
 		/// <param name="parameter">リクエストのパラメーター</param>
+		/// <param name="proxy">リクエストに利用するプロキシ</param>
+		/// <param name="userAgent">ユーザーの UserAgent</param>
 		/// <returns>APIから返された値(レスポンス)</returns>
 		public async Task<string> Request(
-			API.Method method, string url, Dictionary<string, string> parameter = null, string proxy = null)
+			API.Method method,
+			string url,
+			Dictionary<string, string> parameter = null,
+			string proxy = null,
+			string userAgent = null)
 		{
 			return await new TwitterRequest(
-				this, method, new Uri(url), parameter, proxy).Request();
+				this, method, new Uri(url), parameter, proxy, userAgent).Request();
 		}
 
 		/// <summary>
@@ -288,7 +300,9 @@ namespace Twitch
 		/// <returns>連携されたユーザーのTwitterオブジェクト</returns>
 		public async Task<Twitter> AuthorizePin(string pin)
 		{
-			return await this.Auth.GetAccessTokenFromPinCode(pin);
+			var tw = await this.Auth.GetAccessTokenFromPinCode(pin);
+			tw.UserAgent = this.UserAgent;
+			return tw;
 		}
 
 		/// <summary>
@@ -300,7 +314,9 @@ namespace Twitch
 		/// <returns>連携されたユーザーのTwitterオブジェクト</returns>
 		public async Task<Twitter> AuthorizeXAuth(string screenName, string password)
 		{
-			return await this.Auth.GetAccessTokenFromXAuth(screenName, password);
+			var tw = await this.Auth.GetAccessTokenFromXAuth(screenName, password);
+			tw.UserAgent = this.UserAgent;
+			return tw;
 		}
 	}
 }
