@@ -107,13 +107,15 @@ namespace Twitch
 		/// <param name="accessTokenSecret">ユーザーの AccessTokenSecret</param>
 		/// <param name="screenName">ユーザーの ScreenName</param>
 		/// <param name="userID">ユーザーの ID</param>
+		/// <param name="userAgent">ユーザーの UserAgent</param>
 		public Twitter(
 				string consumerKey,
 				string consumerSecret,
 				string accessToken,
 				string accessTokenSecret,
 				string screenName,
-				Int64 userID)
+				Int64 userID,
+				string userAgent = null)
 		{
 			this.ConsumerKey = consumerKey;
 			this.ConsumerSecret = consumerSecret;
@@ -121,6 +123,7 @@ namespace Twitch
 			this.AccessTokenSecret = accessTokenSecret;
 			this.ScreenName = screenName;
 			this.UserID = userID;
+			this.UserAgent = userAgent;
 		}
 
 		/// <summary>
@@ -130,16 +133,19 @@ namespace Twitch
 		/// <param name="consumerSecret">アプリケーションの ConsumerSecret</param>
 		/// <param name="accessToken">ユーザーの AccessToken</param>
 		/// <param name="accessTokenSecret">ユーザーの AccessTokenSecret</param>
+		/// <param name="userAgent">ユーザーの UserAgent</param>
 		public Twitter(
 				string consumerKey,
 				string consumerSecret,
 				string accessToken,
-				string accessTokenSecret)
+				string accessTokenSecret,
+				string userAgent = null)
 		{
 			this.ConsumerKey = consumerKey;
 			this.ConsumerSecret = consumerSecret;
 			this.AccessToken = accessToken;
 			this.AccessTokenSecret = accessTokenSecret;
+			this.UserAgent = userAgent;
 		}
 
 		/// <summary>
@@ -147,12 +153,15 @@ namespace Twitch
 		/// </summary>
 		/// <param name="consumerKey">アプリケーションの ConsumerKey</param>
 		/// <param name="consumerSecret">アプリケーションの ConsumerSecret</param>
+		/// <param name="userAgent">ユーザーの UserAgent</param>
 		public Twitter(
 				string consumerKey,
-				string consumerSecret)
+				string consumerSecret,
+				string userAgent = null)
 		{
 			this.ConsumerKey = consumerKey;
 			this.ConsumerSecret = consumerSecret;
+			this.UserAgent = userAgent;
 			this.Auth = new Authorizer(this.ConsumerKey, this.ConsumerSecret);
 		}
 
@@ -166,6 +175,7 @@ namespace Twitch
 			this.ConsumerSecret = twitter.ConsumerSecret;
 			this.AccessToken = twitter.AccessToken;
 			this.AccessTokenSecret = twitter.AccessTokenSecret;
+			this.UserAgent = twitter.UserAgent;
 		}
 
 		#endregion
