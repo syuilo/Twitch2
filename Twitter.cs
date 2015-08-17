@@ -67,6 +67,15 @@ namespace Twitch
 		}
 
 		/// <summary>
+		/// ユーザーの UserAgent
+		/// </summary>
+		public string UserAgent
+		{
+			get;
+			set;
+		}
+
+		/// <summary>
 		/// このTwitterオブジェクトにAccessTokenおよびAccessTokenSecretが設定されているかどうかを取得します。
 		/// </summary>
 		public bool IsAuthorized
