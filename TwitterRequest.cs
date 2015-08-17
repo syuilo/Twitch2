@@ -38,7 +38,7 @@ namespace Twitch
 			this.Url = url;
 			this.Parameter = query;
 			this.Proxy = proxy;
-			this.UserAgent = userAgent;
+			this.UserAgent = userAgent ?? twitter.UserAgent;
 		}
 
 		/// <summary>
