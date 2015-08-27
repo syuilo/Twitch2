@@ -152,22 +152,32 @@ namespace Twitch
 				// Read response
 				var receive = await response.Content.ReadAsStringAsync();
 
+				try
+				{
+					var json = Utility.DynamicJson.Parse(receive);
+					if (json.IsDefined("errors"))
+						foreach (var error in json.errors)
+							throw new ApiException(error.message);
+				}
+				catch (System.Xml.XmlException ex) { }
+
 				Debug.WriteLine("## " + response.StatusCode + " " + response.ReasonPhrase + " : " + receive + "\r\n--------------------");
 				return receive;
 			}
-			catch (WebException ex)
+			catch (HttpRequestException ex)
 			{
-				if (ex.Status == WebExceptionStatus.ProtocolError)
+				if (ex.InnerException.GetType().FullName == "System.Net.WebException")
 				{
-					var res = (HttpWebResponse)ex.Response;
-					Debug.WriteLine("## HTTPエラー : " + ex.Message + "\r\n--------------------");
-					throw new ApiException(res.StatusCode, res.StatusDescription);
+					var ex2 = (WebException)ex.InnerException;
+					if (ex2.Status == WebExceptionStatus.ProtocolError)
+					{
+						var res = (HttpWebResponse)ex2.Response;
+						Debug.WriteLine("## HTTPエラー : " + ex2.Message + "\r\n--------------------");
+						throw new ApiException(res.StatusCode, res.StatusDescription);
+					}
 				}
-				else
-				{
-					Debug.WriteLine("## エラー : " + ex.Message + "\r\n--------------------");
-					throw ex;
-				}
+				Debug.WriteLine("## エラー : " + ex.Message + "\r\n--------------------");
+				throw ex;
 			}
 		}
 	}
